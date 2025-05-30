@@ -82,7 +82,7 @@ matrix, table_names, table_to_domain, table_to_kpi = build_common_fields_matrix_
 
 These examples demonstrate how to import the necessary functions, prepare your data in DataFrames, and generate the schema-based and KPI-based matrices, which can be used for further analysis and visualization.
 
-![Example of a schema-kpi network comparison](images/comparison_network.png)
+![Example of a schema-kpi network comparison](images/combined_networks.png)
 
 ### Network Analysis and Advance Usage
 
