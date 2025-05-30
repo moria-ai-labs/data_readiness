@@ -1,0 +1,306 @@
+
+[
+  {
+    "kpi_name": "Total Revenue",
+    "department": "Finance",
+    "report_name": "Financial Performance Dashboard",
+    "cadence": "Monthly",
+    "description": "The total revenue generated from all sales.",
+    "data_required": [
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "total_amount"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Gross Profit Margin",
+    "department": "Finance",
+    "report_name": "Financial Performance Dashboard",
+    "cadence": "Monthly",
+    "description": "The percentage of revenue that exceeds the cost of goods sold (COGS).",
+    "data_required": [
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "total_amount"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "OrderItems",
+        "field_name": "quantity"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "OrderItems",
+        "field_name": "menu_item_id"
+      },
+      {
+        "domain_name": "Menu",
+        "table_name": "MenuItems",
+        "field_name": "menu_item_id"
+      },
+      {
+        "domain_name": "Menu",
+        "table_name": "MenuItems",
+        "field_name": "price"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Customer Acquisition Cost (CAC)",
+    "department": "Marketing",
+    "report_name": "Marketing Performance Report",
+    "cadence": "Quarterly",
+    "description": "The cost of acquiring a new customer.",
+    "data_required": [
+      {
+        "domain_name": "Customer",
+        "table_name": "Customers",
+        "field_name": "customer_id"
+      },
+      {
+        "domain_name": "Marketing",
+        "table_name": "MarketingCampaigns",
+        "field_name": "campaign_cost"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Customer Lifetime Value (CLTV)",
+    "department": "Sales & Marketing",
+    "report_name": "Customer Analytics Dashboard",
+    "cadence": "Quarterly",
+    "description": "A prediction of the net profit attributed to the entire future relationship with a customer.",
+    "data_required": [
+      {
+        "domain_name": "Customer",
+        "table_name": "Customers",
+        "field_name": "customer_id"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "customer_id"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "total_amount"
+      },
+       {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "order_date"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Order Fulfilment Rate",
+    "department": "Operations",
+    "report_name": "Operational Performance Dashboard",
+    "cadence": "Weekly",
+    "description": "The percentage of orders successfully fulfilled.",
+    "data_required": [
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "order_id"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "status"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Customer Satisfaction Score (CSAT)",
+    "department": "Customer Service",
+    "report_name": "Customer Satisfaction Report",
+    "cadence": "Monthly",
+    "description": "A measure of customer satisfaction with our services.",
+    "data_required": [
+      {
+        "domain_name": "Customer",
+        "table_name": "Customers",
+        "field_name": "customer_id"
+      },
+      {
+        "domain_name": "CustomerService",
+        "table_name": "CustomerFeedback",
+        "field_name": "satisfaction_score"
+      }
+    ]
+  },
+    {
+    "kpi_name": "Employee Turnover Rate",
+    "department": "Human Resources",
+    "report_name": "HR Analytics Dashboard",
+    "cadence": "Quarterly",
+    "description": "Percentage of employees who left the company during the period.",
+    "data_required": [
+      {
+        "domain_name": "Employee",
+        "table_name": "Employees",
+        "field_name": "employee_id"
+      },
+      {
+        "domain_name": "Employee",
+        "table_name": "EmployeeResignations",
+        "field_name": "resignation_date"
+      },
+       {
+        "domain_name": "Employee",
+        "table_name": "Employees",
+        "field_name": "hire_date"
+      }
+    ]
+  },
+    {
+    "kpi_name": "Menu Item Popularity",
+    "department": "Culinary",
+    "report_name": "Menu Analytics Dashboard",
+    "cadence": "Monthly",
+    "description": "Identifies the best selling and least selling menu items",
+    "data_required": [
+      {
+        "domain_name": "Menu",
+        "table_name": "MenuItems",
+        "field_name": "menu_item_id"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "OrderItems",
+        "field_name": "menu_item_id"
+      },
+       {
+        "domain_name": "Order",
+        "table_name": "OrderItems",
+        "field_name": "quantity"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Food Cost Percentage",
+    "department": "Finance & Culinary",
+    "report_name": "Cost Control Report",
+    "cadence": "Monthly",
+    "description": "The percentage of revenue spent on food and ingredients.",
+    "data_required": [
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "total_amount"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "OrderItems",
+        "field_name": "menu_item_id"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "OrderItems",
+        "field_name": "quantity"
+      },
+      {
+        "domain_name": "Menu",
+        "table_name": "MenuItems",
+        "field_name": "menu_item_id"
+      },
+      {
+        "domain_name": "Menu",
+        "table_name": "MenuItemIngredients",
+        "field_name": "menu_item_id"
+      },
+      {
+        "domain_name": "Menu",
+        "table_name": "MenuItemIngredients",
+        "field_name": "ingredient_id"
+      },
+       {
+        "domain_name": "Menu",
+        "table_name": "Ingredients",
+        "field_name": "ingredient_id"
+      },
+      {
+        "domain_name": "Menu",
+        "table_name": "Ingredients",
+        "field_name": "unit_cost"
+      }
+    ]
+  },
+    {
+    "kpi_name": "Inventory Turnover Rate",
+    "department": "Purchasing & Logistics",
+    "report_name": "Inventory Management Report",
+    "cadence": "Monthly",
+    "description": "How quickly ingredients are used and replenished",
+    "data_required": [
+      {
+        "domain_name": "Inventory",
+        "table_name": "Inventory",
+        "field_name": "ingredient_id"
+      },
+      {
+        "domain_name": "Inventory",
+        "table_name": "Inventory",
+        "field_name": "quantity_on_hand"
+      },
+      {
+        "domain_name": "Menu",
+        "table_name": "MenuItemIngredients",
+        "field_name": "ingredient_id"
+      },
+      {
+        "domain_name": "Menu",
+        "table_name": "MenuItemIngredients",
+        "field_name": "quantity"
+      }
+    ]
+  },
+  {
+    "kpi_name": "On-Time Delivery Rate",
+    "department": "Logistics",
+    "report_name": "Logistics Performance Dashboard",
+    "cadence": "Weekly",
+    "description": "Percentage of orders delivered within the promised timeframe.",
+    "data_required": [
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "order_id"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "event_date"
+      },
+      {
+        "domain_name": "Logistics",
+        "table_name": "DeliverySchedule",
+        "field_name": "actual_delivery_time"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Average Order Value (AOV)",
+    "department": "Sales",
+    "report_name": "Sales Performance Dashboard",
+    "cadence": "Monthly",
+    "description": "The average amount spent per order.",
+    "data_required": [
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "total_amount"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "order_id"
+      }
+    ]
+  }
+]

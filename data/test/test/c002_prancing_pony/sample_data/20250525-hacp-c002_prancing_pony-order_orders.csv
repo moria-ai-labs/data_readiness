@@ -1,0 +1,11 @@
+order_id,customer_id,event_date,event_type,number_of_guests,order_date,total_amount,status,location_id
+1001,201,2024-07-20,Wedding,150,2024-06-15 10:30:00,15000.0,Confirmed,5
+1002,205,2024-08-10,Corporate Event,75,2024-07-01 14:00:00,7500.0,Prepared,2
+1003,210,2024-09-05,Party,50,2024-08-15 09:15:00,3000.0,Delivered,10
+1004,202,2024-07-28,Wedding,200,2024-06-20 16:45:00,20000.0,Completed,1
+1005,208,2024-08-25,Corporate Event,120,2024-07-10 11:00:00,12000.0,Confirmed,7
+1006,215,2024-09-15,Party,30,2024-08-20 13:30:00,1800.0,Placed,3
+1007,203,2024-07-15,Wedding,100,2024-06-01 15:00:00,10000.0,Delivered,9
+1008,207,2024-08-01,Corporate Event,60,2024-07-15 08:45:00,6000.0,Completed,6
+1009,212,2024-09-20,Party,40,2024-08-25 17:00:00,2400.0,Prepared,4
+1010,209,2024-07-01,Corporate Event,90,2024-06-10 12:15:00,9000.0,Cancelled,8

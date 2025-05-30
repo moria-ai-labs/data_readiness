@@ -1,0 +1,11 @@
+customer_id,first_name,last_name,email,phone_number,address,city,state,zip_code,signup_date,customer_segment
+1001,Bilbo,Baggins,bilbo.baggins@theshire.com,555-111-2222,"Bag End, Hobbiton",Hobbiton,WV,12345,2023-01-15,High Value
+1002,Frodo,Baggins,frodo.baggins@theshire.com,555-111-3333,"Bag End, Hobbiton",Hobbiton,WV,12345,2023-03-20,New Customer
+1003,Samwise,Gamgee,sam.gamgee@theshire.com,555-111-4444,"3 Bagshot Row, Hobbiton",Hobbiton,WV,12345,2023-05-10,Loyal Customer
+1004,Merry,Brandybuck,merry.brandybuck@buckleberry.com,555-222-5555,"Crickhollow, Buckleberry",Buckleberry,WV,54321,2023-07-01,Potential High Value
+1005,Pippin,Took,pippin.took@tuckborough.com,555-222-6666,"Great Smials, Tuckborough",Tuckborough,WV,67890,2023-09-15,Standard
+1006,Aragorn,Elessar,aragorn.elessar@gondor.com,555-333-7777,Minas Tirith,Gondor,NY,10001,2023-11-01,High Value
+1007,Legolas,Greenleaf,legolas.greenleaf@mirkwood.com,555-333-8888,Mirkwood,Mirkwood,OR,97005,2024-01-20,Standard
+1008,Gimli,Gloinsson,gimli.gloinsson@erebor.com,555-444-9999,Erebor,Dale,WA,98101,2024-03-10,Loyal Customer
+1009,Gandalf,The Grey,gandalf.grey@valinor.com,555-444-0000,Unknown,Unknown,NA,00000,2024-05-01,High Value
+1010,Eowyn,Shieldmaiden,eowyn.shieldmaiden@rohan.com,555-555-1111,Edoras,Rohan,CA,90210,2024-06-15,Potential High Value

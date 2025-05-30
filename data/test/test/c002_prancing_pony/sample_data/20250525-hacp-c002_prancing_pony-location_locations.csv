@@ -1,0 +1,11 @@
+location_id,location_name,address,city,state,zip_code,location_type
+1001,The Shire Kitchen,1 Bagshot Row,Hobbiton,WV,26506,Kitchen
+1002,Bree Office,12 Prancing Pony Lane,Bree,NY,10001,Office
+1003,Rivendell Warehouse,3 Elf Road,Rivendell Valley,CA,90210,Warehouse
+1004,Moria Kitchen,"Deep Gate, West Hall",Khazad-dûm,UT,84101,Kitchen
+1005,Lothlorien Office,Golden Wood Drive,Caras Galadhon,GA,30303,Office
+1006,Rohan Kitchen,"Edoras, Golden Hall",Edoras,TX,75001,Kitchen
+1007,Gondor Warehouse,White City Depot,Minas Tirith,VA,23219,Warehouse
+1008,Helm's Deep Kitchen,"Hornburg, Inner Courtyard",Helm's Deep,KY,40202,Kitchen
+1009,Isengard Office,"Orthanc Tower, Level 3",Isengard,WA,98101,Office
+1010,Mordor Kitchen,Mount Doom Catering,Orodruin,AZ,85001,Kitchen

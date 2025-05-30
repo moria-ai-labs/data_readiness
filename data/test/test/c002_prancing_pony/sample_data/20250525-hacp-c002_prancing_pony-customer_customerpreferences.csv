@@ -1,0 +1,11 @@
+customer_id,dietary_restriction,allergy,preferred_cuisine,notes
+101,Vegetarian,None,Italian,Prefers pasta dishes and avoids spicy food.
+102,Gluten-Free,Dairy,Mediterranean,Requires all dishes to be completely dairy-free. Olive oil based dressings preferred.
+103,Vegan,Peanuts,Asian,Strict vegan. No animal products whatsoever. Peanut allergy is severe.
+104,None,Shellfish,American,"Allergic to all shellfish, including shrimp, crab, and lobster. No other restrictions."
+105,Pescatarian,None,Seafood,"Eats fish, but no other meat. Enjoys grilled or baked seafood."
+106,None,Tree Nuts,Mexican,"Allergic to almonds, walnuts, pecans, etc. Avocados are fine. Likes spicy food."
+107,Low Carb,Soy,French,Follows a low-carbohydrate diet. No soy products allowed. Prefers classic French cuisine.
+108,Dairy-Free,None,Indian,Cannot consume any dairy products. Coconut milk is an acceptable substitute.
+109,None,Sesame,Thai,Severe sesame allergy. Must avoid all sesame seeds and sesame oil.
+110,Paleo,Legumes,Brazilian,"Follows a Paleo diet. No legumes allowed (beans, lentils, peanuts). Prefers meat-based dishes."

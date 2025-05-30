@@ -1,0 +1,11 @@
+menu_item_id,item_name,description,category,price,is_vegetarian,is_gluten_free,image_url
+1,Mini Beef Wellingtons,"Tender beef tenderloin wrapped in flaky puff pastry, served with a rich mushroom duxelles.",Appetizer,7.99,False,False,https://example.com/images/beef_wellingtons.jpg
+2,Caprese Skewers,"Fresh mozzarella balls, cherry tomatoes, and basil leaves drizzled with balsamic glaze.",Appetizer,5.49,True,True,https://example.com/images/caprese_skewers.jpg
+3,Roasted Salmon with Dill Sauce,"Succulent roasted salmon fillet topped with a creamy dill sauce, served with asparagus.",Main Course,18.99,False,True,https://example.com/images/roasted_salmon.jpg
+4,Vegetable Lasagna,"Layers of pasta, ricotta cheese, and a medley of roasted vegetables in a hearty tomato sauce.",Main Course,14.99,True,False,https://example.com/images/vegetable_lasagna.jpg
+5,Chocolate Lava Cake,"Warm chocolate cake with a molten chocolate center, served with vanilla ice cream.",Dessert,6.99,True,False,https://example.com/images/chocolate_lava_cake.jpg
+6,Fruit Tart,Delicate pastry crust filled with pastry cream and topped with fresh seasonal fruits.,Dessert,5.99,True,False,https://example.com/images/fruit_tart.jpg
+7,Spinach and Artichoke Dip,"Creamy blend of spinach, artichoke hearts, and cheeses, served with toasted baguette slices.",Appetizer,8.49,True,False,https://example.com/images/spinach_artichoke_dip.jpg
+8,Grilled Chicken Caesar Salad,"Grilled chicken breast served on a bed of romaine lettuce with parmesan cheese, croutons, and Caesar dressing.",Main Course,12.99,False,False,https://example.com/images/chicken_caesar_salad.jpg
+9,Lemon Bars,Tangy and sweet lemon bars with a shortbread crust.,Dessert,4.49,True,False,https://example.com/images/lemon_bars.jpg
+10,Gluten-Free Chocolate Brownies,Rich and fudgy chocolate brownies made with gluten-free flour.,Dessert,5.75,True,True,https://example.com/images/gluten_free_brownies.jpg

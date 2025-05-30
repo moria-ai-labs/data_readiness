@@ -1,0 +1,11 @@
+ingredient_id,ingredient_name,unit_cost,supplier_id
+1,Chicken Breast,2.5,101
+2,Basmati Rice,0.75,102
+3,Broccoli Florets,1.2,103
+4,Salmon Fillet,6.0,104
+5,Russet Potatoes,0.5,105
+6,Heavy Cream,3.0,106
+7,Asparagus Spears,2.0,103
+8,Beef Tenderloin,9.5,101
+9,Cherry Tomatoes,1.75,107
+10,Fresh Basil,4.0,108

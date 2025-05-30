@@ -1,0 +1,11 @@
+menu_item_id,ingredient_id,quantity,unit_of_measure
+101,1,200.0,grams
+101,2,50.0,ml
+101,3,1.0,unit
+102,4,300.0,grams
+102,5,100.0,grams
+103,6,150.0,grams
+103,7,2.0,unit
+104,8,250.0,grams
+104,9,75.0,ml
+105,10,1.5,unit

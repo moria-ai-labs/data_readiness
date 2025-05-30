@@ -1,0 +1,307 @@
+field_name,field_type,field_description,is_primary_key,foreign_key_references,domain_name,table_name
+CustomerID,INTEGER,Unique identifier for the customer. Primary Key.,TRUE,,Customer,Customers
+FirstName,VARCHAR(100),Customer's first name.,FALSE,,Customer,Customers
+LastName,VARCHAR(100),Customer's last name.,FALSE,,Customer,Customers
+EmailAddress,VARCHAR(255),Customer's email address (unique).,FALSE,,Customer,Customers
+PhoneNumber,VARCHAR(20),Customer's phone number.,FALSE,,Customer,Customers
+CustomerType,VARCHAR(50),"Type of customer (e.g., Individual, Business).",FALSE,,Customer,Customers
+BusinessName,VARCHAR(255),Business name if CustomerType is Business (nullable).,FALSE,,Customer,Customers
+LoyaltyID,VARCHAR(50),Customer's loyalty program identifier (nullable).,FALSE,,Customer,Customers
+OptInEmail,BOOLEAN,Flag indicating if customer opted-in for email marketing.,FALSE,,Customer,Customers
+OptInSMS,BOOLEAN,Flag indicating if customer opted-in for SMS marketing.,FALSE,,Customer,Customers
+RegistrationDate,TIMESTAMP,Date and time customer registered.,FALSE,,Customer,Customers
+LastActivityDate,TIMESTAMP,"Date and time of customer's last significant activity (e.g., login, purchase).",FALSE,,Customer,Customers
+CreatedDate,TIMESTAMP,Date the record was created.,FALSE,,Customer,Customers
+ModifiedDate,TIMESTAMP,Date the record was last modified.,FALSE,,Customer,Customers
+AddressID,INTEGER,Unique identifier for the address. Primary Key.,TRUE,,Customer,CustomerAddresses
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID.,FALSE,Customers(CustomerID),Customer,CustomerAddresses
+AddressType,VARCHAR(50),"Type of address (e.g., Shipping, Billing).",FALSE,,Customer,CustomerAddresses
+StreetAddress1,VARCHAR(255),Street address line 1.,FALSE,,Customer,CustomerAddresses
+StreetAddress2,VARCHAR(255),Street address line 2 (nullable).,FALSE,,Customer,CustomerAddresses
+City,VARCHAR(100),City.,FALSE,,Customer,CustomerAddresses
+State,VARCHAR(50),State or province.,FALSE,,Customer,CustomerAddresses
+PostalCode,VARCHAR(20),Postal or ZIP code.,FALSE,,Customer,CustomerAddresses
+Country,VARCHAR(50),Country.,FALSE,,Customer,CustomerAddresses
+IsPrimaryShipping,BOOLEAN,Indicates if this is the primary shipping address.,FALSE,,Customer,CustomerAddresses
+IsPrimaryBilling,BOOLEAN,Indicates if this is the primary billing address.,FALSE,,Customer,CustomerAddresses
+CommunicationLogID,INTEGER,Unique identifier for the communication log entry. Primary Key.,TRUE,,Customer,CustomerCommunicationLog
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID.,FALSE,Customers(CustomerID),Customer,CustomerCommunicationLog
+CommunicationTimestamp,TIMESTAMP,Date and time of the communication.,FALSE,,Customer,CustomerCommunicationLog
+Channel,VARCHAR(50),"Communication channel (e.g., Email, Phone, SMS, Chat).",FALSE,,Customer,CustomerCommunicationLog
+Direction,VARCHAR(20),"Direction of communication (e.g., Outbound, Inbound).",FALSE,,Customer,CustomerCommunicationLog
+Subject,VARCHAR(255),Subject or topic of the communication (nullable).,FALSE,,Customer,CustomerCommunicationLog
+ContentSnippet,TEXT,A brief snippet or summary of the communication content (nullable).,FALSE,,Customer,CustomerCommunicationLog
+ReferenceID,VARCHAR(100),"Related identifier, e.g., CampaignID, TicketID (nullable).",FALSE,,Customer,CustomerCommunicationLog
+ProductID,INTEGER,Unique identifier for the product. Primary Key.,TRUE,,Product,Products
+SKU,VARCHAR(100),"Stock Keeping Unit, unique identifier for the product variant.",FALSE,,Product,Products
+ProductName,VARCHAR(255),Name of the product.,FALSE,,Product,Products
+ProductDescription,TEXT,Detailed description of the product.,FALSE,,Product,Products
+CategoryID,INTEGER,Foreign Key referencing ProductCategories.CategoryID.,FALSE,ProductCategories(CategoryID),Product,Products
+SupplierID,INTEGER,Foreign Key referencing Suppliers.SupplierID (nullable).,FALSE,Suppliers(SupplierID),Product,Products
+BrandName,VARCHAR(100),Brand name of the product.,FALSE,,Product,Products
+PurchaseCost,"DECIMAL(10, 2)",Cost to acquire the product.,FALSE,,Product,Products
+CurrentSellingPrice,"DECIMAL(10, 2)",Current selling price of the product.,FALSE,,Product,Products
+WarrantyMonths,INTEGER,Warranty period in months (nullable).,FALSE,,Product,Products
+WeightKG,"DECIMAL(8, 2)",Weight of the product in kilograms (nullable).,FALSE,,Product,Products
+DimensionsCM,VARCHAR(100),"Dimensions (e.g., LxWxH in cm) (nullable).",FALSE,,Product,Products
+IsActive,BOOLEAN,Flag indicating if the product is currently active/sellable.,FALSE,,Product,Products
+DateAdded,DATE,Date the product was added to the catalog.,FALSE,,Product,Products
+ImageURL,VARCHAR(500),URL for the primary product image (nullable).,FALSE,,Product,Products
+ModifiedDate,TIMESTAMP,Date the record was last modified.,FALSE,,Product,Products
+CategoryID,INTEGER,Unique identifier for the category. Primary Key.,TRUE,,Product,ProductCategories
+CategoryName,VARCHAR(100),Name of the category.,FALSE,,Product,ProductCategories
+CategoryDescription,TEXT,Description of the category (nullable).,FALSE,,Product,ProductCategories
+ParentCategoryID,INTEGER,"Foreign Key referencing ProductCategories.CategoryID for sub-categories (self-referencing, nullable for top-level categories).",FALSE,ProductCategories(CategoryID),Product,ProductCategories
+SupplierID,INTEGER,Unique identifier for the supplier. Primary Key.,TRUE,,Product,Suppliers
+SupplierName,VARCHAR(255),Name of the supplier company.,FALSE,,Product,Suppliers
+ContactPerson,VARCHAR(100),Primary contact person at the supplier (nullable).,FALSE,,Product,Suppliers
+EmailAddress,VARCHAR(255),Supplier contact email address (nullable).,FALSE,,Product,Suppliers
+PhoneNumber,VARCHAR(20),Supplier contact phone number (nullable).,FALSE,,Product,Suppliers
+Address,TEXT,Supplier address (nullable).,FALSE,,Product,Suppliers
+PriceHistoryID,INTEGER,Unique identifier for the price history record. Primary Key.,TRUE,,Product,ProductPricingHistory
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),Product,ProductPricingHistory
+EffectiveDate,DATE,Date the selling price became effective.,FALSE,,Product,ProductPricingHistory
+SellingPrice,"DECIMAL(10, 2)",The selling price effective from this date.,FALSE,,Product,ProductPricingHistory
+ProductFeatureID,INTEGER,Unique identifier for the product feature entry. Primary Key.,TRUE,,Product,ProductFeatures
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),Product,ProductFeatures
+FeatureName,VARCHAR(100),"Name of the feature (e.g., Color, Horsepower, Voltage).",FALSE,,Product,ProductFeatures
+FeatureValue,VARCHAR(255),"Value of the feature (e.g., Red, 150 HP, 220V).",FALSE,,Product,ProductFeatures
+OrderID,INTEGER,Unique identifier for the order. Primary Key.,TRUE,,Sales Transaction,Orders
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID (nullable for guest checkouts).,FALSE,Customers(CustomerID),Sales Transaction,Orders
+OrderDateTime,TIMESTAMP,Date and time the order was placed.,FALSE,,Sales Transaction,Orders
+OrderStatus,VARCHAR(50),"Current status of the order (e.g., Pending, Processing, Shipped, Delivered, Canceled).",FALSE,,Sales Transaction,Orders
+SalesChannel,VARCHAR(50),"Channel through which the order was placed (e.g., Online, InStore, Phone).",FALSE,,Sales Transaction,Orders
+LocationID,INTEGER,"Foreign Key referencing Locations.LocationID (for InStore sales, nullable for Online).",FALSE,Locations(LocationID),Sales Transaction,Orders
+ShippingAddressID,INTEGER,Foreign Key referencing CustomerAddresses.AddressID (nullable for InStore pickup without shipping).,FALSE,CustomerAddresses(AddressID),Sales Transaction,Orders
+BillingAddressID,INTEGER,Foreign Key referencing CustomerAddresses.AddressID.,FALSE,CustomerAddresses(AddressID),Sales Transaction,Orders
+SubtotalAmount,"DECIMAL(12, 2)","Total amount before taxes, shipping, and discounts.",FALSE,,Sales Transaction,Orders
+TaxAmount,"DECIMAL(10, 2)",Total tax amount for the order.,FALSE,,Sales Transaction,Orders
+ShippingCost,"DECIMAL(10, 2)",Cost of shipping for the order.,FALSE,,Sales Transaction,Orders
+DiscountAmount,"DECIMAL(10, 2)",Total discount amount applied to the order.,FALSE,,Sales Transaction,Orders
+TotalAmount,"DECIMAL(12, 2)",Final total amount of the order.,FALSE,,Sales Transaction,Orders
+PaymentMethod,VARCHAR(50),"Method used for payment (e.g., CreditCard, PayPal, Cash).",FALSE,,Sales Transaction,Orders
+PaymentTransactionID,VARCHAR(100),Transaction ID from the payment gateway (nullable).,FALSE,,Sales Transaction,Orders
+PromotionCodeUsed,VARCHAR(50),Promotion code applied to the order (nullable).,FALSE,,Sales Transaction,Orders
+Notes,TEXT,Any customer or internal notes related to the order (nullable).,FALSE,,Sales Transaction,Orders
+OrderItemID,INTEGER,Unique identifier for the order item. Primary Key.,TRUE,,Sales Transaction,OrderItems
+OrderID,INTEGER,Foreign Key referencing Orders.OrderID.,FALSE,Orders(OrderID),Sales Transaction,OrderItems
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),Sales Transaction,OrderItems
+Quantity,INTEGER,Number of units of the product ordered.,FALSE,,Sales Transaction,OrderItems
+UnitPriceAtPurchase,"DECIMAL(10, 2)",Price per unit at the time of purchase.,FALSE,,Sales Transaction,OrderItems
+DiscountPerItem,"DECIMAL(10, 2)",Discount amount applied per item (if any).,FALSE,,Sales Transaction,OrderItems
+LineItemTotal,"DECIMAL(12, 2)",Total amount for this line item (Quantity * UnitPrice - Discount).,FALSE,,Sales Transaction,OrderItems
+LocationID,INTEGER,Unique identifier for the location. Primary Key.,TRUE,,Inventory & Stock,Locations
+LocationName,VARCHAR(100),"Name of the location (e.g., 'Downtown Store', 'Central Warehouse').",FALSE,,Inventory & Stock,Locations
+LocationType,VARCHAR(50),"Type of location (e.g., Store, Warehouse, DistributionCenter).",FALSE,,Inventory & Stock,Locations
+AddressStreet,VARCHAR(255),Street address.,FALSE,,Inventory & Stock,Locations
+City,VARCHAR(100),City.,FALSE,,Inventory & Stock,Locations
+State,VARCHAR(50),State or province.,FALSE,,Inventory & Stock,Locations
+PostalCode,VARCHAR(20),Postal or ZIP code.,FALSE,,Inventory & Stock,Locations
+Country,VARCHAR(50),Country.,FALSE,,Inventory & Stock,Locations
+PhoneNumber,VARCHAR(20),Phone number for the location (nullable).,FALSE,,Inventory & Stock,Locations
+OperatingHours,VARCHAR(255),"Operating hours (for stores, nullable).",FALSE,,Inventory & Stock,Locations
+InventoryLevelID,INTEGER,Unique identifier for the inventory level record. Primary Key.,TRUE,,Inventory & Stock,InventoryLevels
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),Inventory & Stock,InventoryLevels
+LocationID,INTEGER,Foreign Key referencing Locations.LocationID.,FALSE,Locations(LocationID),Inventory & Stock,InventoryLevels
+QuantityOnHand,INTEGER,Current quantity of the product available at this location.,FALSE,,Inventory & Stock,InventoryLevels
+QuantityOnOrder,INTEGER,Quantity of the product currently on order from suppliers for this location.,FALSE,,Inventory & Stock,InventoryLevels
+ReorderPoint,INTEGER,Stock level at which a reorder should be triggered (nullable).,FALSE,,Inventory & Stock,InventoryLevels
+LastStockUpdateTimestamp,TIMESTAMP,Timestamp of the last update to this inventory record.,FALSE,,Inventory & Stock,InventoryLevels
+InventoryTransactionID,INTEGER,Unique identifier for the inventory transaction. Primary Key.,TRUE,,Inventory & Stock,InventoryTransactions
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),Inventory & Stock,InventoryTransactions
+LocationID,INTEGER,Foreign Key referencing Locations.LocationID where transaction occurred.,FALSE,Locations(LocationID),Inventory & Stock,InventoryTransactions
+TransactionType,VARCHAR(50),"Type of transaction (e.g., PurchaseReceipt, SalesShipment, Return, AdjustmentIn, AdjustmentOut, TransferIn, TransferOut).",FALSE,,Inventory & Stock,InventoryTransactions
+QuantityChanged,INTEGER,"Quantity of product affected (positive for increase, negative for decrease).",FALSE,,Inventory & Stock,InventoryTransactions
+TransactionTimestamp,TIMESTAMP,Date and time of the transaction.,FALSE,,Inventory & Stock,InventoryTransactions
+RelatedOrderID,INTEGER,Foreign Key referencing Orders.OrderID if related to a sale/return (nullable).,FALSE,Orders(OrderID),Inventory & Stock,InventoryTransactions
+RelatedPurchaseOrderID,INTEGER,Foreign Key referencing PurchaseOrders.PurchaseOrderID if related to a purchase receipt (nullable).,FALSE,PurchaseOrders(PurchaseOrderID),Inventory & Stock,InventoryTransactions
+RelatedTransferID,INTEGER,Identifier for inventory transfers between locations (nullable).,FALSE,,Inventory & Stock,InventoryTransactions
+ReasonCode,VARCHAR(50),"Reason for adjustment (e.g., Damaged, Obsolete, StockCount) (nullable).",FALSE,,Inventory & Stock,InventoryTransactions
+EmployeeID,INTEGER,Foreign Key referencing Employees.EmployeeID who performed/authorized the transaction (nullable).,FALSE,Employees(EmployeeID),Inventory & Stock,InventoryTransactions
+WebSessionID,VARCHAR(255),Unique identifier for the web session. Primary Key.,TRUE,,E-commerce Platform,WebSessions
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID (nullable for anonymous users).,FALSE,Customers(CustomerID),E-commerce Platform,WebSessions
+IPAddress,VARCHAR(45),IP address of the user.,FALSE,,E-commerce Platform,WebSessions
+UserAgent,TEXT,User agent string from the browser.,FALSE,,E-commerce Platform,WebSessions
+SessionStartTime,TIMESTAMP,Start time of the session.,FALSE,,E-commerce Platform,WebSessions
+SessionEndTime,TIMESTAMP,End time of the session (nullable if ongoing).,FALSE,,E-commerce Platform,WebSessions
+ReferrerURL,TEXT,URL of the referring page (nullable).,FALSE,,E-commerce Platform,WebSessions
+LandingPageURL,TEXT,The first page viewed in the session.,FALSE,,E-commerce Platform,WebSessions
+DeviceType,VARCHAR(50),"Type of device (e.g., Desktop, Mobile, Tablet).",FALSE,,E-commerce Platform,WebSessions
+Browser,VARCHAR(100),Browser used.,FALSE,,E-commerce Platform,WebSessions
+OperatingSystem,VARCHAR(100),Operating system used.,FALSE,,E-commerce Platform,WebSessions
+PageViewID,INTEGER,Unique identifier for the page view. Primary Key.,TRUE,,E-commerce Platform,PageViewEvents
+WebSessionID,VARCHAR(255),Foreign Key referencing WebSessions.WebSessionID.,FALSE,WebSessions(WebSessionID),E-commerce Platform,PageViewEvents
+PageURL,TEXT,URL of the page viewed.,FALSE,,E-commerce Platform,PageViewEvents
+PageTitle,VARCHAR(255),Title of the page viewed (nullable).,FALSE,,E-commerce Platform,PageViewEvents
+ViewTimestamp,TIMESTAMP,Timestamp of the page view.,FALSE,,E-commerce Platform,PageViewEvents
+TimeOnPageSeconds,INTEGER,Time spent on the page in seconds (nullable).,FALSE,,E-commerce Platform,PageViewEvents
+CartEventID,INTEGER,Unique identifier for the cart event. Primary Key.,TRUE,,E-commerce Platform,CartInteractionEvents
+WebSessionID,VARCHAR(255),Foreign Key referencing WebSessions.WebSessionID.,FALSE,WebSessions(WebSessionID),E-commerce Platform,CartInteractionEvents
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID (nullable).,FALSE,Customers(CustomerID),E-commerce Platform,CartInteractionEvents
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),E-commerce Platform,CartInteractionEvents
+Quantity,INTEGER,Quantity of the product involved in the event.,FALSE,,E-commerce Platform,CartInteractionEvents
+EventType,VARCHAR(50),"Type of cart event (e.g., AddToCart, RemoveFromCart, UpdateQuantity, ViewCart).",FALSE,,E-commerce Platform,CartInteractionEvents
+EventTimestamp,TIMESTAMP,Timestamp of the cart event.,FALSE,,E-commerce Platform,CartInteractionEvents
+ReviewID,INTEGER,Unique identifier for the product review. Primary Key.,TRUE,,E-commerce Platform,OnlineProductReviews
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),E-commerce Platform,OnlineProductReviews
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID who wrote the review.,FALSE,Customers(CustomerID),E-commerce Platform,OnlineProductReviews
+Rating,INTEGER,"Rating given by the customer (e.g., 1 to 5 stars).",FALSE,,E-commerce Platform,OnlineProductReviews
+ReviewTitle,VARCHAR(255),Title of the review (nullable).,FALSE,,E-commerce Platform,OnlineProductReviews
+ReviewText,TEXT,Full text of the review (nullable).,FALSE,,E-commerce Platform,OnlineProductReviews
+ReviewDate,DATE,Date the review was submitted.,FALSE,,E-commerce Platform,OnlineProductReviews
+IsApproved,BOOLEAN,Flag indicating if the review has been approved for display.,FALSE,,E-commerce Platform,OnlineProductReviews
+HelpfulVotes,INTEGER,Number of users who found this review helpful.,FALSE,,E-commerce Platform,OnlineProductReviews
+CampaignID,INTEGER,Unique identifier for the campaign. Primary Key.,TRUE,,Marketing & Campaign,Campaigns
+CampaignName,VARCHAR(255),Name of the marketing campaign.,FALSE,,Marketing & Campaign,Campaigns
+CampaignType,VARCHAR(50),"Type of campaign (e.g., Email, SocialMedia, PPC, Print, Event).",FALSE,,Marketing & Campaign,Campaigns
+StartDate,DATE,Start date of the campaign.,FALSE,,Marketing & Campaign,Campaigns
+EndDate,DATE,End date of the campaign (nullable if ongoing).,FALSE,,Marketing & Campaign,Campaigns
+Budget,"DECIMAL(12, 2)",Budget allocated for the campaign (nullable).,FALSE,,Marketing & Campaign,Campaigns
+TargetAudienceSegment,VARCHAR(255),Description of the target audience segment (nullable).,FALSE,,Marketing & Campaign,Campaigns
+Status,VARCHAR(50),"Current status of the campaign (e.g., Planned, Active, Completed, Paused).",FALSE,,Marketing & Campaign,Campaigns
+PerformanceMetricID,INTEGER,Unique identifier for the performance metric record. Primary Key.,TRUE,,Marketing & Campaign,CampaignPerformanceMetrics
+CampaignID,INTEGER,Foreign Key referencing Campaigns.CampaignID.,FALSE,Campaigns(CampaignID),Marketing & Campaign,CampaignPerformanceMetrics
+MetricDate,DATE,Date for which the metrics are recorded.,FALSE,,Marketing & Campaign,CampaignPerformanceMetrics
+Impressions,INTEGER,Number of impressions (nullable).,FALSE,,Marketing & Campaign,CampaignPerformanceMetrics
+Clicks,INTEGER,Number of clicks (nullable).,FALSE,,Marketing & Campaign,CampaignPerformanceMetrics
+Conversions,INTEGER,"Number of conversions (e.g., sales, sign-ups) (nullable).",FALSE,,Marketing & Campaign,CampaignPerformanceMetrics
+Spend,"DECIMAL(10, 2)",Amount spent on this day/period for the campaign (nullable).,FALSE,,Marketing & Campaign,CampaignPerformanceMetrics
+AttributedRevenue,"DECIMAL(12, 2)",Revenue attributed to this campaign for this day/period (nullable).,FALSE,,Marketing & Campaign,CampaignPerformanceMetrics
+ChannelSpecificMetric1Name,VARCHAR(100),Name of a channel-specific metric (nullable).,FALSE,,Marketing & Campaign,CampaignPerformanceMetrics
+ChannelSpecificMetric1Value,VARCHAR(255),Value of channel-specific metric 1 (nullable).,FALSE,,Marketing & Campaign,CampaignPerformanceMetrics
+EmailRecipientID,INTEGER,Unique identifier. Primary Key.,TRUE,,Marketing & Campaign,EmailMarketingRecipients
+CampaignID,INTEGER,Foreign Key referencing Campaigns.CampaignID.,FALSE,Campaigns(CampaignID),Marketing & Campaign,EmailMarketingRecipients
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID (if a known customer).,FALSE,Customers(CustomerID),Marketing & Campaign,EmailMarketingRecipients
+EmailAddress,VARCHAR(255),Email address of the recipient at time of send.,FALSE,,Marketing & Campaign,EmailMarketingRecipients
+SentTimestamp,TIMESTAMP,Timestamp when the email was sent.,FALSE,,Marketing & Campaign,EmailMarketingRecipients
+OpenTimestamp,TIMESTAMP,Timestamp when the email was opened (nullable).,FALSE,,Marketing & Campaign,EmailMarketingRecipients
+ClickTimestamp,TIMESTAMP,Timestamp of the first click (nullable).,FALSE,,Marketing & Campaign,EmailMarketingRecipients
+Bounced,BOOLEAN,Flag indicating if the email bounced.,FALSE,,Marketing & Campaign,EmailMarketingRecipients
+Unsubscribed,BOOLEAN,Flag indicating if the recipient unsubscribed from this email/list.,FALSE,,Marketing & Campaign,EmailMarketingRecipients
+StoreMetricID,INTEGER,Unique identifier for the store metric record. Primary Key.,TRUE,,Store Operations,DailyStoreMetrics
+LocationID,INTEGER,Foreign Key referencing Locations.LocationID (must be a store type).,FALSE,Locations(LocationID),Store Operations,DailyStoreMetrics
+MetricDate,DATE,Date for which the metrics are recorded.,FALSE,,Store Operations,DailyStoreMetrics
+TotalSalesAmount,"DECIMAL(12, 2)",Total sales amount for the day at this store.,FALSE,,Store Operations,DailyStoreMetrics
+NumberOfTransactions,INTEGER,Total number of sales transactions for the day.,FALSE,,Store Operations,DailyStoreMetrics
+FootTrafficCount,INTEGER,Estimated or actual foot traffic count (nullable).,FALSE,,Store Operations,DailyStoreMetrics
+AverageTransactionValue,"DECIMAL(10, 2)",Calculated Average Transaction Value for the day.,FALSE,,Store Operations,DailyStoreMetrics
+LaborHours,"DECIMAL(8,2)",Total labor hours for the day (nullable).,FALSE,,Store Operations,DailyStoreMetrics
+OperationalExpenses,"DECIMAL(10,2)",Specific operational expenses for the day (nullable).,FALSE,,Store Operations,DailyStoreMetrics
+PurchaseOrderID,INTEGER,Unique identifier for the purchase order. Primary Key.,TRUE,,Supply Chain & Logistics,PurchaseOrders
+SupplierID,INTEGER,Foreign Key referencing Suppliers.SupplierID.,FALSE,Suppliers(SupplierID),Supply Chain & Logistics,PurchaseOrders
+OrderDate,DATE,Date the purchase order was placed.,FALSE,,Supply Chain & Logistics,PurchaseOrders
+ExpectedDeliveryDate,DATE,Expected date for goods to be delivered (nullable).,FALSE,,Supply Chain & Logistics,PurchaseOrders
+ActualDeliveryDate,DATE,Actual date goods were delivered (nullable).,FALSE,,Supply Chain & Logistics,PurchaseOrders
+DestinationLocationID,INTEGER,Foreign Key referencing Locations.LocationID (warehouse or store).,FALSE,Locations(LocationID),Supply Chain & Logistics,PurchaseOrders
+Status,VARCHAR(50),"Status of the PO (e.g., Pending, Placed, PartiallyReceived, Received, Canceled).",FALSE,,Supply Chain & Logistics,PurchaseOrders
+TotalAmount,"DECIMAL(12, 2)",Total estimated or actual cost of the PO.,FALSE,,Supply Chain & Logistics,PurchaseOrders
+ShippingTerms,VARCHAR(100),"Shipping terms (e.g., FOB, CIF) (nullable).",FALSE,,Supply Chain & Logistics,PurchaseOrders
+Notes,TEXT,Any notes related to the PO (nullable).,FALSE,,Supply Chain & Logistics,PurchaseOrders
+POItemID,INTEGER,Unique identifier for the purchase order item. Primary Key.,TRUE,,Supply Chain & Logistics,PurchaseOrderItems
+PurchaseOrderID,INTEGER,Foreign Key referencing PurchaseOrders.PurchaseOrderID.,FALSE,PurchaseOrders(PurchaseOrderID),Supply Chain & Logistics,PurchaseOrderItems
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),Supply Chain & Logistics,PurchaseOrderItems
+QuantityOrdered,INTEGER,Quantity of the product ordered.,FALSE,,Supply Chain & Logistics,PurchaseOrderItems
+QuantityReceived,INTEGER,Quantity of the product actually received (nullable).,FALSE,,Supply Chain & Logistics,PurchaseOrderItems
+UnitPriceAtPurchase,"DECIMAL(10, 2)",Cost per unit of the product.,FALSE,,Supply Chain & Logistics,PurchaseOrderItems
+LineItemTotal,"DECIMAL(12, 2)",Total cost for this line item.,FALSE,,Supply Chain & Logistics,PurchaseOrderItems
+ShipmentID,INTEGER,Unique identifier for the shipment. Primary Key.,TRUE,,Supply Chain & Logistics,Shipments
+ShipmentType,VARCHAR(50),"Type of shipment (e.g., Inbound, OutboundCustomer, InterLocationTransfer).",FALSE,,Supply Chain & Logistics,Shipments
+RelatedOrderID,INTEGER,Foreign Key to Orders.OrderID if outbound customer shipment (nullable).,FALSE,Orders(OrderID),Supply Chain & Logistics,Shipments
+RelatedPurchaseOrderID,INTEGER,Foreign Key to PurchaseOrders.PurchaseOrderID if inbound shipment (nullable).,FALSE,PurchaseOrders(PurchaseOrderID),Supply Chain & Logistics,Shipments
+CarrierName,VARCHAR(100),Name of the shipping carrier (nullable).,FALSE,,Supply Chain & Logistics,Shipments
+TrackingNumber,VARCHAR(100),Carrier tracking number (nullable).,FALSE,,Supply Chain & Logistics,Shipments
+ShipDate,DATE,Date the shipment was dispatched.,FALSE,,Supply Chain & Logistics,Shipments
+EstimatedDeliveryDate,DATE,Estimated date of delivery (nullable).,FALSE,,Supply Chain & Logistics,Shipments
+ActualDeliveryDate,DATE,Actual date of delivery (nullable).,FALSE,,Supply Chain & Logistics,Shipments
+ShippingCost,"DECIMAL(10, 2)",Cost of this shipment (nullable).,FALSE,,Supply Chain & Logistics,Shipments
+OriginLocationID,INTEGER,Foreign Key to Locations.LocationID for origin (nullable if external supplier).,FALSE,Locations(LocationID),Supply Chain & Logistics,Shipments
+DestinationLocationID,INTEGER,Foreign Key to Locations.LocationID for destination (nullable for customer address).,FALSE,Locations(LocationID),Supply Chain & Logistics,Shipments
+Status,VARCHAR(50),"Current status of shipment (e.g., InTransit, Delivered, Delayed).",FALSE,,Supply Chain & Logistics,Shipments
+ShipmentItemID,INTEGER,Unique identifier for the shipment item. Primary Key.,TRUE,,Supply Chain & Logistics,ShipmentItems
+ShipmentID,INTEGER,Foreign Key referencing Shipments.ShipmentID.,FALSE,Shipments(ShipmentID),Supply Chain & Logistics,ShipmentItems
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),Supply Chain & Logistics,ShipmentItems
+QuantityShipped,INTEGER,Quantity of this product in the shipment.,FALSE,,Supply Chain & Logistics,ShipmentItems
+AccountID,VARCHAR(20),"Unique identifier for the account (e.g., account number). Primary Key.",TRUE,,Finance & Accounting,ChartOfAccounts
+AccountName,VARCHAR(100),Name of the account.,FALSE,,Finance & Accounting,ChartOfAccounts
+AccountType,VARCHAR(50),"Type of account (e.g., Asset, Liability, Equity, Revenue, Expense).",FALSE,,Finance & Accounting,ChartOfAccounts
+NormalBalance,VARCHAR(10),Normal balance side (Debit or Credit).,FALSE,,Finance & Accounting,ChartOfAccounts
+AccountDescription,TEXT,Description of the account (nullable).,FALSE,,Finance & Accounting,ChartOfAccounts
+ParentAccountID,VARCHAR(20),Foreign Key referencing ChartOfAccounts.AccountID for hierarchical structure (nullable).,FALSE,ChartOfAccounts(AccountID),Finance & Accounting,ChartOfAccounts
+GLTransactionID,INTEGER,Unique identifier for the GL transaction entry. Primary Key.,TRUE,,Finance & Accounting,GeneralLedgerTransactions
+TransactionDate,DATE,Date of the transaction.,FALSE,,Finance & Accounting,GeneralLedgerTransactions
+PostingDate,DATE,Date the transaction was posted to the ledger.,FALSE,,Finance & Accounting,GeneralLedgerTransactions
+AccountID,VARCHAR(20),Foreign Key referencing ChartOfAccounts.AccountID.,FALSE,ChartOfAccounts(AccountID),Finance & Accounting,GeneralLedgerTransactions
+Description,TEXT,Description of the transaction.,FALSE,,Finance & Accounting,GeneralLedgerTransactions
+DebitAmount,"DECIMAL(14, 2)",Debit amount (0 if credit).,FALSE,,Finance & Accounting,GeneralLedgerTransactions
+CreditAmount,"DECIMAL(14, 2)",Credit amount (0 if debit).,FALSE,,Finance & Accounting,GeneralLedgerTransactions
+ReferenceType,VARCHAR(50),"Type of reference document (e.g., Order, Invoice, PO) (nullable).",FALSE,,Finance & Accounting,GeneralLedgerTransactions
+ReferenceID,VARCHAR(100),Identifier of the reference document (nullable).,FALSE,,Finance & Accounting,GeneralLedgerTransactions
+JournalID,VARCHAR(50),Identifier linking all entries of a single journal voucher.,FALSE,,Finance & Accounting,GeneralLedgerTransactions
+InvoiceID,VARCHAR(50),Unique identifier for the invoice. Primary Key.,TRUE,,Finance & Accounting,Invoices
+OrderID,INTEGER,Foreign Key referencing Orders.OrderID.,FALSE,Orders(OrderID),Finance & Accounting,Invoices
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID.,FALSE,Customers(CustomerID),Finance & Accounting,Invoices
+InvoiceDate,DATE,Date the invoice was issued.,FALSE,,Finance & Accounting,Invoices
+DueDate,DATE,Date the invoice payment is due.,FALSE,,Finance & Accounting,Invoices
+TotalAmountDue,"DECIMAL(12, 2)",Total amount due on the invoice.,FALSE,,Finance & Accounting,Invoices
+AmountPaid,"DECIMAL(12, 2)",Total amount paid against this invoice.,FALSE,,Finance & Accounting,Invoices
+Status,VARCHAR(50),"Status of the invoice (e.g., Draft, Sent, Paid, PartiallyPaid, Overdue, Void).",FALSE,,Finance & Accounting,Invoices
+PaymentReceivedID,INTEGER,Unique identifier for the payment. Primary Key.,TRUE,,Finance & Accounting,PaymentsReceived
+InvoiceID,VARCHAR(50),Foreign Key referencing Invoices.InvoiceID (nullable if prepayment or unapplied).,FALSE,Invoices(InvoiceID),Finance & Accounting,PaymentsReceived
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID.,FALSE,Customers(CustomerID),Finance & Accounting,PaymentsReceived
+PaymentDate,DATE,Date the payment was received.,FALSE,,Finance & Accounting,PaymentsReceived
+PaymentAmount,"DECIMAL(12, 2)",Amount of the payment received.,FALSE,,Finance & Accounting,PaymentsReceived
+PaymentMethod,VARCHAR(50),"Method of payment (e.g., BankTransfer, Check, CreditCard).",FALSE,,Finance & Accounting,PaymentsReceived
+PaymentReference,VARCHAR(100),"Reference number for the payment (e.g., check number, transaction ID).",FALSE,,Finance & Accounting,PaymentsReceived
+TicketID,INTEGER,Unique identifier for the service ticket. Primary Key.,TRUE,,Customer Service & Support,ServiceTickets
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID who raised the ticket.,FALSE,Customers(CustomerID),Customer Service & Support,ServiceTickets
+ProductID,INTEGER,Foreign Key referencing Products.ProductID if ticket relates to a specific product (nullable).,FALSE,Products(ProductID),Customer Service & Support,ServiceTickets
+OrderID,INTEGER,Foreign Key referencing Orders.OrderID if ticket relates to a specific order (nullable).,FALSE,Orders(OrderID),Customer Service & Support,ServiceTickets
+IssueType,VARCHAR(100),"Type or category of the issue (e.g., Defect, Inquiry, Complaint).",FALSE,,Customer Service & Support,ServiceTickets
+Subject,VARCHAR(255),Brief subject of the ticket.,FALSE,,Customer Service & Support,ServiceTickets
+Description,TEXT,Detailed description of the issue.,FALSE,,Customer Service & Support,ServiceTickets
+Status,VARCHAR(50),"Current status of the ticket (e.g., Open, InProgress, PendingCustomer, Resolved, Closed).",FALSE,,Customer Service & Support,ServiceTickets
+Priority,VARCHAR(50),"Priority of the ticket (e.g., Low, Medium, High, Urgent).",FALSE,,Customer Service & Support,ServiceTickets
+CreatedTimestamp,TIMESTAMP,Date and time the ticket was created.,FALSE,,Customer Service & Support,ServiceTickets
+LastUpdatedTimestamp,TIMESTAMP,Date and time the ticket was last updated.,FALSE,,Customer Service & Support,ServiceTickets
+ResolvedTimestamp,TIMESTAMP,Date and time the ticket was resolved (nullable).,FALSE,,Customer Service & Support,ServiceTickets
+AssignedAgentID,INTEGER,Foreign Key referencing Employees.EmployeeID of the assigned support agent (nullable).,FALSE,Employees(EmployeeID),Customer Service & Support,ServiceTickets
+Channel,VARCHAR(50),"Channel through which ticket was created (e.g. Email, Phone, WebForm).",FALSE,,Customer Service & Support,ServiceTickets
+TicketUpdateID,INTEGER,Unique identifier for the ticket update. Primary Key.,TRUE,,Customer Service & Support,ServiceTicketUpdates
+TicketID,INTEGER,Foreign Key referencing ServiceTickets.TicketID.,FALSE,ServiceTickets(TicketID),Customer Service & Support,ServiceTicketUpdates
+UpdateTimestamp,TIMESTAMP,Date and time of the update.,FALSE,,Customer Service & Support,ServiceTicketUpdates
+UpdatedByEmployeeID,INTEGER,Foreign Key referencing Employees.EmployeeID if updated by an agent (nullable).,FALSE,Employees(EmployeeID),Customer Service & Support,ServiceTicketUpdates
+UpdatedByCustomerID,INTEGER,Foreign Key referencing Customers.CustomerID if updated by customer (nullable).,FALSE,Customers(CustomerID),Customer Service & Support,ServiceTicketUpdates
+UpdateText,TEXT,Content of the update or comment.,FALSE,,Customer Service & Support,ServiceTicketUpdates
+IsInternalNote,BOOLEAN,Flag indicating if this is an internal note not visible to the customer.,FALSE,,Customer Service & Support,ServiceTicketUpdates
+WarrantyClaimID,INTEGER,Unique identifier for the warranty claim. Primary Key.,TRUE,,Customer Service & Support,WarrantyClaims
+CustomerID,INTEGER,Foreign Key referencing Customers.CustomerID.,FALSE,Customers(CustomerID),Customer Service & Support,WarrantyClaims
+ProductID,INTEGER,Foreign Key referencing Products.ProductID.,FALSE,Products(ProductID),Customer Service & Support,WarrantyClaims
+OrderItemID,INTEGER,Foreign Key referencing OrderItems.OrderItemID of the original purchase.,FALSE,OrderItems(OrderItemID),Customer Service & Support,WarrantyClaims
+ClaimDate,DATE,Date the warranty claim was submitted.,FALSE,,Customer Service & Support,WarrantyClaims
+IssueDescription,TEXT,Description of the issue for the warranty claim.,FALSE,,Customer Service & Support,WarrantyClaims
+Status,VARCHAR(50),"Status of the claim (e.g., Submitted, UnderReview, Approved, Rejected, Processed).",FALSE,,Customer Service & Support,WarrantyClaims
+ResolutionType,VARCHAR(50),"How the claim was resolved (e.g. Repair, Replacement, Refund) (nullable).",FALSE,,Customer Service & Support,WarrantyClaims
+ResolutionNotes,TEXT,Notes regarding the resolution of the claim (nullable).,FALSE,,Customer Service & Support,WarrantyClaims
+DepartmentID,INTEGER,Unique identifier for the department. Primary Key.,TRUE,,Human Resources (Internal),Departments
+DepartmentName,VARCHAR(100),Name of the department.,FALSE,,Human Resources (Internal),Departments
+ManagerEmployeeID,INTEGER,Foreign Key referencing Employees.EmployeeID of the department manager (nullable).,FALSE,Employees(EmployeeID),Human Resources (Internal),Departments
+EmployeeID,INTEGER,Unique identifier for the employee. Primary Key.,TRUE,,Human Resources (Internal),Employees
+FirstName,VARCHAR(100),Employee's first name.,FALSE,,Human Resources (Internal),Employees
+LastName,VARCHAR(100),Employee's last name.,FALSE,,Human Resources (Internal),Employees
+EmailAddress,VARCHAR(255),Employee's company email address.,FALSE,,Human Resources (Internal),Employees
+PhoneNumber,VARCHAR(20),Employee's phone number (nullable).,FALSE,,Human Resources (Internal),Employees
+JobTitle,VARCHAR(100),Employee's job title.,FALSE,,Human Resources (Internal),Employees
+DepartmentID,INTEGER,Foreign Key referencing Departments.DepartmentID.,FALSE,Departments(DepartmentID),Human Resources (Internal),Employees
+LocationID,INTEGER,Foreign Key referencing Locations.LocationID where the employee is primarily based (nullable for remote/HQ).,FALSE,Locations(LocationID),Human Resources (Internal),Employees
+ManagerEmployeeID,INTEGER,"Foreign Key referencing Employees.EmployeeID of the employee's manager (self-referencing, nullable).",FALSE,Employees(EmployeeID),Human Resources (Internal),Employees
+HireDate,DATE,Date the employee was hired.,FALSE,,Human Resources (Internal),Employees
+TerminationDate,DATE,Date the employee's employment was terminated (nullable).,FALSE,,Human Resources (Internal),Employees
+EmploymentStatus,VARCHAR(50),"Current employment status (e.g., Active, OnLeave, Terminated).",FALSE,,Human Resources (Internal),Employees
+SalesPerformanceID,INTEGER,Unique identifier for the sales performance record. Primary Key.,TRUE,,Human Resources (Internal),EmployeeSalesPerformance
+EmployeeID,INTEGER,Foreign Key referencing Employees.EmployeeID.,FALSE,Employees(EmployeeID),Human Resources (Internal),EmployeeSalesPerformance
+PerformancePeriodStartDate,DATE,Start date of the performance measurement period.,FALSE,,Human Resources (Internal),EmployeeSalesPerformance
+PerformancePeriodEndDate,DATE,End date of the performance measurement period.,FALSE,,Human Resources (Internal),EmployeeSalesPerformance
+TotalSalesAmount,"DECIMAL(14, 2)",Total sales amount achieved by the employee in this period.,FALSE,,Human Resources (Internal),EmployeeSalesPerformance
+NumberOfSalesTransactions,INTEGER,Number of sales transactions attributed to the employee.,FALSE,,Human Resources (Internal),EmployeeSalesPerformance
+CommissionEarned,"DECIMAL(10, 2)",Commission earned by the employee in this period (nullable).,FALSE,,Human Resources (Internal),EmployeeSalesPerformance
+SalesTarget,"DECIMAL(14,2)",Sales target for this employee for the period (nullable).,FALSE,,Human Resources (Internal),EmployeeSalesPerformance

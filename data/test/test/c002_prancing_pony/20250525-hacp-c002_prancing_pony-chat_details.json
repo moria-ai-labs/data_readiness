@@ -1,0 +1,289 @@
+```json
+[
+  {
+    "message_id": "M0001",
+    "date": "2024-11-15",
+    "text": "Hey Sarah, the latest Order Volume Report seems off. Can you check the Orders table, specifically the event_date field?",
+    "sender": {
+      "employee_id": "E001",
+      "first_name": "Alice",
+      "last_name": "Smith",
+      "department": "Sales",
+      "reports_to": "E002"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Engineering",
+      "reports_to": "E004"
+    },
+    "report_name": "Order Volume Report",
+    "data_required": [
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "event_date"
+      }
+    ]
+  },
+  {
+    "message_id": "M0002",
+    "date": "2024-11-16",
+    "text": "John, I'm having trouble understanding the Customer Segmentation Dashboard.  The customer_segment field in the Customers table seems inaccurate.",
+    "sender": {
+      "employee_id": "E005",
+      "first_name": "David",
+      "last_name": "Lee",
+      "department": "Marketing",
+      "reports_to": "E006"
+    },
+    "receiver": {
+      "employee_id": "E007",
+      "first_name": "John",
+      "last_name": "Davis",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "report_name": "Customer Segmentation Dashboard",
+    "data_required": [
+      {
+        "domain_name": "Customer",
+        "table_name": "Customers",
+        "field_name": "customer_segment"
+      }
+    ]
+  },
+  {
+    "message_id": "M0003",
+    "date": "2024-11-17",
+    "text": "Team, we need to optimize menu costs.  Can someone pull a report on ingredient costs using the Ingredients table, specifically unit_cost?",
+    "sender": {
+      "employee_id": "E002",
+      "first_name": "Michael",
+      "last_name": "Johnson",
+      "department": "Finance",
+      "reports_to": "E008"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Engineering",
+      "reports_to": "E004"
+    },
+    "report_name": "Ingredient Cost Analysis",
+    "data_required": [
+      {
+        "domain_name": "Menu",
+        "table_name": "Ingredients",
+        "field_name": "unit_cost"
+      }
+    ]
+  },
+  {
+    "message_id": "M0004",
+    "date": "2024-11-18",
+    "text": "Hey Data Governance team, I noticed discrepancies between the Inventory table's quantity_on_hand and our physical counts.  Need to investigate.",
+    "sender": {
+      "employee_id": "E009",
+      "first_name": "Emily",
+      "last_name": "Wilson",
+      "department": "Purchasing",
+      "reports_to": "E008"
+    },
+    "receiver": {
+      "employee_id": "E004",
+      "first_name": "Robert",
+      "last_name": "Green",
+      "department": "Data Governance",
+      "reports_to": "E010"
+    },
+    "report_name": "Inventory Accuracy Audit",
+    "data_required": [
+      {
+        "domain_name": "Inventory",
+        "table_name": "Inventory",
+        "field_name": "quantity_on_hand"
+      }
+    ]
+  },
+  {
+    "message_id": "M0005",
+    "date": "2024-11-19",
+    "text": "Hi Data Team, the payments reports does not seem consistent with de Order Table amount.  Can you please check the Orders table and the Payment table, total_amount and amount fields respectively?",
+    "sender": {
+      "employee_id": "E002",
+      "first_name": "Michael",
+      "last_name": "Johnson",
+      "department": "Finance",
+      "reports_to": "E008"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Engineering",
+      "reports_to": "E004"
+    },
+    "report_name": "Payment Discrepancy Report",
+    "data_required": [
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "total_amount"
+      },
+      {
+        "domain_name": "Order",
+        "table_name": "Payments",
+        "field_name": "amount"
+      }
+    ]
+  },
+  {
+    "message_id": "M0006",
+    "date": "2024-11-20",
+    "text": "The employee schedule report is showing incorrect start and end times. Please check EmployeeSchedules table.",
+    "sender": {
+      "employee_id": "E010",
+      "first_name": "Olivia",
+      "last_name": "White",
+      "department": "HR",
+      "reports_to": "E008"
+    },
+    "receiver": {
+      "employee_id": "E007",
+      "first_name": "John",
+      "last_name": "Davis",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "report_name": "Employee Schedule Report",
+    "data_required": [
+      {
+        "domain_name": "Employee",
+        "table_name": "EmployeeSchedules",
+        "field_name": "start_time"
+      },
+      {
+        "domain_name": "Employee",
+        "table_name": "EmployeeSchedules",
+        "field_name": "end_time"
+      }
+    ]
+  },
+  {
+    "message_id": "M0007",
+    "date": "2024-11-21",
+    "text": "Need to update supplier information. The contact_email in the Suppliers table for 'Fresh Foods Inc.' is outdated.",
+    "sender": {
+      "employee_id": "E009",
+      "first_name": "Emily",
+      "last_name": "Wilson",
+      "department": "Purchasing",
+      "reports_to": "E008"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Engineering",
+      "reports_to": "E004"
+    },
+    "report_name": "Supplier Contact Update",
+    "data_required": [
+      {
+        "domain_name": "Supplier",
+        "table_name": "Suppliers",
+        "field_name": "contact_email"
+      }
+    ]
+  },
+  {
+    "message_id": "M0008",
+    "date": "2024-11-22",
+    "text": "Can we get a report on the most popular menu items? Need to analyze the MenuItems table to identify top sellers.",
+    "sender": {
+      "employee_id": "E005",
+      "first_name": "David",
+      "last_name": "Lee",
+      "department": "Marketing",
+      "reports_to": "E006"
+    },
+    "receiver": {
+      "employee_id": "E007",
+      "first_name": "John",
+      "last_name": "Davis",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "report_name": "Menu Item Popularity Analysis",
+    "data_required": [
+      {
+        "domain_name": "Menu",
+        "table_name": "MenuItems",
+        "field_name": "item_name"
+      }
+    ]
+  },
+  {
+    "message_id": "M0009",
+    "date": "2024-11-23",
+    "text": "We are missing location data in some Orders. The location_id in the Orders table is NULL for recent orders. Needs investigation.",
+    "sender": {
+      "employee_id": "E001",
+      "first_name": "Alice",
+      "last_name": "Smith",
+      "department": "Sales",
+      "reports_to": "E002"
+    },
+    "receiver": {
+      "employee_id": "E004",
+      "first_name": "Robert",
+      "last_name": "Green",
+      "department": "Data Governance",
+      "reports_to": "E010"
+    },
+    "report_name": "Missing Location Data Audit",
+    "data_required": [
+      {
+        "domain_name": "Order",
+        "table_name": "Orders",
+        "field_name": "location_id"
+      }
+    ]
+  },
+  {
+    "message_id": "M0010",
+    "date": "2024-11-24",
+    "text": "Need to determine the ideal reorder points for ingredients.  Need to analyze Inventory table reorder_point and reorder_quantity.",
+    "sender": {
+      "employee_id": "E009",
+      "first_name": "Emily",
+      "last_name": "Wilson",
+      "department": "Purchasing",
+      "reports_to": "E008"
+    },
+    "receiver": {
+      "employee_id": "E007",
+      "first_name": "John",
+      "last_name": "Davis",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "report_name": "Inventory Reorder Point Analysis",
+    "data_required": [
+      {
+        "domain_name": "Inventory",
+        "table_name": "Inventory",
+        "field_name": "reorder_point"
+      },
+      {
+        "domain_name": "Inventory",
+        "table_name": "Inventory",
+        "field_name": "reorder_quantity"
+      }
+    ]
+  }
+]
+```

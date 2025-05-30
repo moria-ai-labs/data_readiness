@@ -1,0 +1,54 @@
+```json
+[
+  {
+    "domain_name": "Customer",
+    "domain_description": "Data pertaining to Bamfurlong's customers, including demographics, contact information, purchasing history, credit information, loyalty program status, and communication preferences.  Includes both individual farmers and larger agricultural businesses.",
+    "department_owner": "Sales & Marketing"
+  },
+  {
+    "domain_name": "Product",
+    "domain_description": "Master data concerning Bamfurlong's product catalog. This includes product descriptions, specifications, pricing (list and promotional), warranty information, parts lists, supplier information, and discontinuation status. Covers all types of farming equipment, from small hand tools to large combines.",
+    "department_owner": "Merchandising & Procurement"
+  },
+  {
+    "domain_name": "Sales",
+    "domain_description": "Transactional data related to sales, including order details, line items, discounts applied, payment information, shipping information, returns, and salesperson information. Includes both in-store and online sales.",
+    "department_owner": "Sales"
+  },
+  {
+    "domain_name": "Inventory",
+    "domain_description": "Real-time inventory levels across all Bamfurlong locations (warehouses, stores, and service centers). Includes item tracking, stock levels, reorder points, inventory aging, and stock adjustments. Crucial for understanding availability and optimizing stock management.",
+    "department_owner": "Logistics & Operations"
+  },
+  {
+    "domain_name": "Supplier",
+    "domain_description": "Information about Bamfurlong's suppliers, including contact information, payment terms, lead times, performance metrics (e.g., on-time delivery, quality), and contract details. Allows for vendor performance analysis and supplier relationship management.",
+    "department_owner": "Procurement"
+  },
+  {
+    "domain_name": "Financial",
+    "domain_description": "Financial data encompassing revenue, expenses, profit margins, accounts receivable, accounts payable, and other accounting information. Used for financial reporting and business performance analysis.",
+    "department_owner": "Finance"
+  },
+  {
+    "domain_name": "Marketing",
+    "domain_description": "Data related to marketing campaigns, including campaign details, target audiences, channel performance (email, print, online), lead generation, and marketing spend. Enables marketing ROI analysis and campaign optimization.",
+    "department_owner": "Marketing"
+  },
+  {
+    "domain_name": "Service",
+    "domain_description": "Data pertaining to equipment service and repair, including service requests, work orders, technician details, parts used, repair history, customer satisfaction ratings, and warranty claims. Includes both in-house and on-site services.",
+    "department_owner": "Service & Support"
+  },
+  {
+    "domain_name": "Location",
+    "domain_description": "Information about Bamfurlong's store locations, warehouses, and service centers. Includes addresses, opening hours, store managers, and geographical data.",
+    "department_owner": "Operations"
+  },
+  {
+    "domain_name": "Employee",
+    "domain_description": "Human Resources data on Bamfurlong's employees. Contains Personally Identifiable Information (PII).",
+    "department_owner": "Human Resources"
+  }
+]
+```

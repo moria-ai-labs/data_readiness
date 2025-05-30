@@ -1,0 +1,11 @@
+employee_id,first_name,last_name,email,phone_number,hire_date,job_title,salary,location_id
+101,Frodo,Baggins,frodo.baggins@prancingpony.com,555-123-4567,2018-05-15,Executive Chef,75000.0,1
+102,Samwise,Gamgee,samwise.gamgee@prancingpony.com,555-987-6543,2019-02-20,Sous Chef,60000.0,1
+103,Meriadoc,Brandybuck,meriadoc.brandybuck@prancingpony.com,555-246-8013,2020-09-01,Event Manager,55000.0,2
+104,Peregrin,Took,peregrin.took@prancingpony.com,555-135-7912,2021-04-10,Server,35000.0,3
+105,Gandalf,Grey,gandalf.grey@prancingpony.com,555-867-5309,2017-11-22,Regional Manager,90000.0,4
+106,Aragorn,Elessar,aragorn.elessar@prancingpony.com,555-333-4444,2022-01-05,Head Bartender,48000.0,1
+107,Legolas,Greenleaf,legolas.greenleaf@prancingpony.com,555-777-8888,2023-03-15,Catering Assistant,32000.0,2
+108,Gimli,Gloin,gimli.gloin@prancingpony.com,555-222-3333,2020-07-01,Kitchen Manager,58000.0,3
+109,Eowyn,Shieldmaiden,eowyn.shieldmaiden@prancingpony.com,555-444-5555,2021-12-10,Pastry Chef,62000.0,4
+110,Bilbo,Baggins,bilbo.baggins@prancingpony.com,555-666-7777,2016-01-01,Consultant,100000.0,1

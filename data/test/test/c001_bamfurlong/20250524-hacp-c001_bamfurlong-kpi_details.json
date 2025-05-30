@@ -1,0 +1,407 @@
+
+[
+  {
+    "kpi_name": "Total Revenue",
+    "department": "Sales & Finance",
+    "report_name": "Sales Performance Dashboard",
+    "cadence": "Monthly",
+    "description": "The total revenue generated from all sales.",
+    "data_required": [
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "TotalAmount"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Monthly Recurring Revenue",
+    "department": "Sales & Finance",
+    "report_name": "Sales Performance Dashboard",
+    "cadence": "Monthly",
+    "description": "Monthly total revenue generated from all sales.",
+    "data_required": [
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "TotalAmount"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "OrderDate"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Average Order Value",
+    "department": "Sales & Finance",
+    "report_name": "Sales Performance Dashboard",
+    "cadence": "Monthly",
+    "description": "The average value of each sales order.",
+    "data_required": [
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "TotalAmount"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "OrderID"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Number of Orders",
+    "department": "Sales & Finance",
+    "report_name": "Sales Performance Dashboard",
+    "cadence": "Monthly",
+    "description": "The total number of sales orders placed.",
+    "data_required": [
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "OrderID"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "OrderDate"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Customer Acquisition Cost (CAC)",
+    "department": "Marketing & Sales",
+    "report_name": "Marketing Performance Report",
+    "cadence": "Monthly",
+    "description": "The cost of acquiring a new customer.",
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "Amount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "TransactionType"
+      },
+      {
+        "domain_name": "Customer",
+        "table_name": "Customer",
+        "field_name": "CustomerID"
+      },
+      {
+        "domain_name": "Customer",
+        "table_name": "Customer",
+        "field_name": "CustomerSince"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Customer Lifetime Value (CLTV)",
+    "department": "Marketing & Sales",
+    "report_name": "Customer Analysis Report",
+    "cadence": "Quarterly",
+    "description": "Prediction of the net profit attributed to the entire future relationship with a customer.",
+    "data_required": [
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "CustomerID"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "TotalAmount"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "OrderDate"
+      },
+      {
+        "domain_name": "Customer",
+        "table_name": "Customer",
+        "field_name": "CustomerID"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "Amount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "TransactionType"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Customer Retention Rate",
+    "department": "Marketing & Sales",
+    "report_name": "Customer Analysis Report",
+    "cadence": "Quarterly",
+    "description": "The percentage of customers retained over a specific period.",
+    "data_required": [
+      {
+        "domain_name": "Customer",
+        "table_name": "Customer",
+        "field_name": "CustomerID"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "OrderDate"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Inventory Turnover Ratio",
+    "department": "Supply Chain",
+    "report_name": "Inventory Management Report",
+    "cadence": "Quarterly",
+    "description": "How many times inventory is sold and replaced over a period.",
+    "data_required": [
+      {
+        "domain_name": "Inventory",
+        "table_name": "Inventory",
+        "field_name": "ProductID"
+      },
+      {
+        "domain_name": "Inventory",
+        "table_name": "Inventory",
+        "field_name": "QuantityOnHand"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "OrderItem",
+        "field_name": "ProductID"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "OrderItem",
+        "field_name": "Quantity"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Stockout Rate",
+    "department": "Supply Chain",
+    "report_name": "Inventory Management Report",
+    "cadence": "Monthly",
+    "description": "The percentage of time a product is out of stock.",
+    "data_required": [
+      {
+        "domain_name": "Inventory",
+        "table_name": "Inventory",
+        "field_name": "ProductID"
+      },
+      {
+        "domain_name": "Inventory",
+        "table_name": "Inventory",
+        "field_name": "QuantityOnHand"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "OrderItem",
+        "field_name": "ProductID"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "OrderItem",
+        "field_name": "Quantity"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Gross Profit Margin",
+    "department": "Finance",
+    "report_name": "Financial Performance Report",
+    "cadence": "Quarterly",
+    "description": "The percentage of revenue that exceeds the cost of goods sold (COGS).",
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "Amount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "TransactionType"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "GLAccount",
+        "field_name": "AccountID"
+      },
+       {
+        "domain_name": "Finance",
+        "table_name": "GLAccount",
+        "field_name": "AccountType"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Net Profit Margin",
+    "department": "Finance",
+    "report_name": "Financial Performance Report",
+    "cadence": "Quarterly",
+    "description": "The percentage of revenue remaining after all expenses have been deducted.",
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "Amount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "TransactionType"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "GLAccount",
+        "field_name": "AccountID"
+      },
+       {
+        "domain_name": "Finance",
+        "table_name": "GLAccount",
+        "field_name": "AccountType"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Return on Assets (ROA)",
+    "department": "Finance",
+    "report_name": "Financial Performance Report",
+    "cadence": "Annually",
+    "description": "A percentage that shows how profitable a company is relative to its total assets.",
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "Amount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Transaction",
+        "field_name": "TransactionType"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "GLAccount",
+        "field_name": "AccountID"
+      },
+       {
+        "domain_name": "Finance",
+        "table_name": "GLAccount",
+        "field_name": "AccountType"
+      }
+    ]
+  },
+    {
+    "kpi_name": "Order Fulfillment Time",
+    "department": "Supply Chain",
+    "report_name": "Operational Efficiency Report",
+    "cadence": "Weekly",
+    "description": "The average time it takes to fulfill a customer order from placement to shipment.",
+    "data_required": [
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "OrderID"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "OrderDate"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "SalesOrder",
+        "field_name": "OrderStatus"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Defect Rate",
+    "department": "Supply Chain",
+    "report_name": "Quality Control Report",
+    "cadence": "Monthly",
+    "description": "Number of defective products divided by the total number of products shipped.",
+    "data_required": [
+      {
+        "domain_name": "Sales",
+        "table_name": "OrderItem",
+        "field_name": "ProductID"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "OrderItem",
+        "field_name": "Quantity"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Customer Satisfaction Score (CSAT)",
+    "department": "Marketing & Sales",
+    "report_name": "Customer Satisfaction Report",
+    "cadence": "Quarterly",
+    "description": "Measures customer satisfaction through surveys or feedback forms.",
+    "data_required": [
+      {
+        "domain_name": "Customer",
+        "table_name": "Customer",
+        "field_name": "CustomerID"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Sales by Product Category",
+    "department": "Sales & Product Management",
+    "report_name": "Sales Performance by Product",
+    "cadence": "Monthly",
+    "description": "Total sales revenue broken down by product category.",
+    "data_required": [
+      {
+        "domain_name": "Sales",
+        "table_name": "OrderItem",
+        "field_name": "ProductID"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "OrderItem",
+        "field_name": "UnitPrice"
+      },
+      {
+        "domain_name": "Sales",
+        "table_name": "OrderItem",
+        "field_name": "Quantity"
+      },
+      {
+        "domain_name": "Product",
+        "table_name": "Product",
+        "field_name": "ProductID"
+      },
+      {
+        "domain_name": "Product",
+        "table_name": "Product",
+        "field_name": "CategoryID"
+      },
+      {
+        "domain_name": "Product",
+        "table_name": "Category",
+        "field_name": "CategoryID"
+      },
+      {
+        "domain_name": "Product",
+        "table_name": "Category",
+        "field_name": "CategoryName"
+      }
+    ]
+  }
+]
