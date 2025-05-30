@@ -78,11 +78,11 @@ df_kpis = pd.DataFrame({
 matrix, table_names, table_to_domain, table_to_kpi = build_common_fields_matrix_kpis(df_kpis)
 ```
 
-![Example of a schema network](moria_engine/images/networks_schema.png)
+![Example of a schema network](images/networks_schema.png)
 
 These examples demonstrate how to import the necessary functions, prepare your data in DataFrames, and generate the schema-based and KPI-based matrices, which can be used for further analysis and visualization.
 
-![Example of a schema-kpi network comparison](moria_engine/images/comparison_network.png)
+![Example of a schema-kpi network comparison](images/comparison_network.png)
 
 ### Network Analysis and Advance Usage
 
