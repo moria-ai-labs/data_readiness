@@ -28,8 +28,8 @@ The Moria Data Readiness Engine is a tool designed to analyze relationships and 
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo/moria_data_readiness_engine.git
-   cd moria_data_readiness_engine
+   git clone https://github.com/moria-ai-labs/data_readiness.git
+   cd data_readiness
    ```
 2. Create a virtual environment (recommended)
 
