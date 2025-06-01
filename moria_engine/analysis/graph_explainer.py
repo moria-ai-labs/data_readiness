@@ -178,9 +178,10 @@ def graph_edit_distance_between_schema_and_kpis(G_schema: nx.Graph, G_kpis: nx.G
         float: The graph edit distance (lower means more similar).
     """
     try:
-        # networkx.graph_edit_distance returns a generator, so we take the first value
+        # networkx.graph_edit_distance returns a generator, so we take the first value <- Nope
+        # This is a blocking operation, so we set a timeout
         ged_iter = nx.algorithms.similarity.graph_edit_distance(G_schema, G_kpis, timeout=timeout)
-        distance = next(ged_iter)
+        distance = ged_iter
         return distance
     except Exception as e:
         raise RuntimeError(f"Error computing graph edit distance: {e}")
