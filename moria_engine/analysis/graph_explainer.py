@@ -165,3 +165,22 @@ def graph_centrality_attributes_kpis(df: pd.DataFrame) -> pd.DataFrame:
 
 
 
+def graph_edit_distance_between_schema_and_kpis(G_schema: nx.Graph, G_kpis: nx.Graph, timeout: float = 5.0) -> float:
+    """
+    Compute the graph edit distance between the schema graph and the KPIs graph.
+
+    Args:
+        G_schema (nx.Graph): The schema graph.
+        G_kpis (nx.Graph): The KPIs graph.
+        timeout (float): Maximum time in seconds to compute the distance (default: 5.0).
+
+    Returns:
+        float: The graph edit distance (lower means more similar).
+    """
+    try:
+        # networkx.graph_edit_distance returns a generator, so we take the first value
+        ged_iter = nx.algorithms.similarity.graph_edit_distance(G_schema, G_kpis, timeout=timeout)
+        distance = next(ged_iter)
+        return distance
+    except Exception as e:
+        raise RuntimeError(f"Error computing graph edit distance: {e}")
