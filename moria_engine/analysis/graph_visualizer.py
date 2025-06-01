@@ -45,6 +45,8 @@ def visualize_network_schema(df: pd.DataFrame):
     plt.title("Network Visualization of Common Fields")
     plt.show()
 
+    return G
+
 def visualize_network_interactive_schema(df: pd.DataFrame, output_file="network.html"):
     """
     Visualize the adjacency matrix as an interactive network graph using pyvis.
@@ -178,6 +180,8 @@ def visualize_network_kpis(df: pd.DataFrame):
     nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_weights, font_size=8)
     plt.title("Network Visualization Based on KPIs")
     plt.show()
+
+    return G
 
 def visualize_combined_networks(df_schema: pd.DataFrame, df_kpis: pd.DataFrame):
     """
