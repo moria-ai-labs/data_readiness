@@ -1,0 +1,64 @@
+```json
+[
+  {
+    "domain_name": "Student Information",
+    "domain_description": "Comprehensive data about students, including demographics, contact information, academic history (enrollment, courses, grades, transcripts), advising records, disciplinary actions, and financial aid information.",
+    "department": "Office of the Registrar, Student Financial Services, Academic Advising"
+  },
+  {
+    "domain_name": "Course Catalog",
+    "domain_description": "Information about courses offered by the University, including course descriptions, credit hours, prerequisites, learning outcomes, scheduling information (time, location, instructor), and historical enrollment data.",
+    "department": "Office of the Registrar, Academic Departments"
+  },
+  {
+    "domain_name": "Faculty and Staff Information",
+    "domain_description": "Data about faculty and staff, including demographics, contact information, employment history, academic qualifications, teaching assignments, research activities, performance evaluations, and compensation details.",
+    "department": "Human Resources, Academic Departments, Research Administration"
+  },
+  {
+    "domain_name": "Financial Data",
+    "domain_description": "Data related to the University's finances, including general ledger data, budget information, accounts payable, accounts receivable, grant management, and endowment details. Includes student tuition and fees payments.",
+    "department": "Finance Office, Budget Office, Grants and Sponsored Programs"
+  },
+  {
+    "domain_name": "Admissions Data",
+    "domain_description": "Data about prospective students, including application information, test scores, high school transcripts, application status, and yield data (enrollment decisions).",
+    "department": "Admissions Office"
+  },
+  {
+    "domain_name": "Alumni Data",
+    "domain_description": "Information about alumni, including contact information, degree information, career history, giving history, and engagement with the University.",
+    "department": "Alumni Relations, Development Office"
+  },
+  {
+    "domain_name": "Research Data",
+    "domain_description": "Data about research activities, including grant proposals, funded research projects, publications, patents, and research output metrics.",
+    "department": "Research Administration, Academic Departments"
+  },
+  {
+    "domain_name": "Facilities Data",
+    "domain_description": "Information about University facilities, including buildings, classrooms, labs, equipment, and maintenance records.  Includes space utilization data and energy consumption.",
+    "department": "Facilities Management, Campus Planning"
+  },
+  {
+    "domain_name": "Library Resources",
+    "domain_description": "Data about library holdings, including books, journals, databases, and electronic resources. Includes circulation data and usage statistics.",
+    "department": "University Library"
+  },
+  {
+    "domain_name": "Advancement/Development Data",
+    "domain_description": "Data related to fundraising efforts, including donor information, gift records, pledge information, and campaign performance.",
+    "department": "Development Office"
+  },
+  {
+    "domain_name": "Human Resources Data",
+    "domain_description": "This includes all employee related data, benefits, salary, demographics, vacation time, performance evaluations",
+    "department": "Human Resources"
+  },
+  {
+    "domain_name": "Legal and Compliance Data",
+    "domain_description": "Data related to legal matters, contracts, compliance with regulations (e.g., FERPA, GDPR), and risk management.  Includes incident reports and policy documentation.",
+    "department": "Legal Counsel, Compliance Office"
+  }
+]
+```

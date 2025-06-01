@@ -1,0 +1,257 @@
+[
+  {
+    "kpi_name": "Student Enrollment Count",
+    "department": "Registrar's Office",
+    "report_name": "Enrollment Statistics Dashboard",
+    "cadence": "Monthly",
+    "description": "The total number of students enrolled in the university.",
+    "data_required": [
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Students",
+        "field_name": "StudentID"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Student Retention Rate",
+    "department": "Registrar's Office",
+    "report_name": "Retention Analysis Report",
+    "cadence": "Annually",
+    "description": "Percentage of students who return to the university the following year.",
+    "data_required": [
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Students",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Enrollment",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Semesters",
+        "field_name": "SemesterID"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Graduation Rate",
+    "department": "Registrar's Office",
+    "report_name": "Graduation Statistics Report",
+    "cadence": "Annually",
+    "description": "Percentage of students who graduate within a specified time frame.",
+    "data_required": [
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Students",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "StudentProgram",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "StudentProgram",
+        "field_name": "Status"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Average GPA",
+    "department": "Academic Affairs",
+    "report_name": "Academic Performance Dashboard",
+    "cadence": "Semesterly",
+    "description": "The average Grade Point Average of all students.",
+    "data_required": [
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Enrollment",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Enrollment",
+        "field_name": "Grade"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Number of Courses Offered per Department",
+    "department": "Academic Affairs",
+    "report_name": "Course Catalog Analysis",
+    "cadence": "Annually",
+    "description": "The number of courses offered by each academic department.",
+    "data_required": [
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Courses",
+        "field_name": "CourseID"
+      },
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Courses",
+        "field_name": "DepartmentID"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Total Tuition Revenue",
+    "department": "Finance Department",
+    "report_name": "Financial Performance Report",
+    "cadence": "Monthly",
+    "description": "The total revenue collected from student tuition.",
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "TuitionFees",
+        "field_name": "TuitionAmount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Payments",
+        "field_name": "PaymentAmount"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Scholarship Dollars Awarded",
+    "department": "Finance Department",
+    "report_name": "Financial Aid Report",
+    "cadence": "Annually",
+    "description": "The total amount of scholarship money awarded to students.",
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Scholarships",
+        "field_name": "ScholarshipAmount"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Operating Budget vs Actual",
+    "department": "Finance Department",
+    "report_name": "Budget Performance Report",
+    "cadence": "Monthly",
+    "description": "Comparison of budgeted amounts against actual expenditures.",
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "BudgetedAmount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "ActualExpenditures"
+      }
+    ]
+  },
+    {
+    "kpi_name": "Faculty to Student Ratio",
+    "department": "Human Resources",
+    "report_name": "Staffing Analysis Report",
+    "cadence": "Annually",
+    "description": "The ratio of full-time faculty members to the number of enrolled students.",
+    "data_required": [
+      {
+        "domain_name": "Human Resources",
+        "table_name": "Faculty",
+        "field_name": "FacultyID"
+      },
+      {
+        "domain_name": "Student Information System (SIS)",
+        "table_name": "Students",
+        "field_name": "StudentID"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Employee Turnover Rate",
+    "department": "Human Resources",
+    "report_name": "Employee Turnover Report",
+    "cadence": "Annually",
+    "description": "The rate at which employees leave the university.",
+    "data_required": [
+      {
+        "domain_name": "Human Resources",
+        "table_name": "Faculty",
+        "field_name": "HireDate"
+      },
+      {
+        "domain_name": "Human Resources",
+        "table_name": "Staff",
+        "field_name": "HireDate"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Average Faculty Salary by Department",
+    "department": "Human Resources",
+    "report_name": "Salary Analysis Report",
+    "cadence": "Annually",
+    "description": "The average salary of faculty members within each academic department.",
+    "data_required": [
+      {
+        "domain_name": "Human Resources",
+        "table_name": "Salaries",
+        "field_name": "SalaryAmount"
+      },
+      {
+        "domain_name": "Human Resources",
+        "table_name": "Faculty",
+        "field_name": "FacultyID"
+      },
+      {
+        "domain_name": "Human Resources",
+        "table_name": "Faculty",
+        "field_name": "DepartmentID"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Book Loan Volume",
+    "department": "Library Services",
+    "report_name": "Library Usage Statistics",
+    "cadence": "Monthly",
+    "description": "The total number of books loaned out by the library.",
+    "data_required": [
+      {
+        "domain_name": "Library",
+        "table_name": "Loans",
+        "field_name": "LoanID"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Library Resource Utilization Rate",
+    "department": "Library Services",
+    "report_name": "Resource Utilization Report",
+    "cadence": "Semesterly",
+    "description": "The percentage of library resources that are actively being used.",
+    "data_required": [
+      {
+        "domain_name": "Library",
+        "table_name": "Books",
+        "field_name": "BookID"
+      },
+      {
+        "domain_name": "Library",
+        "table_name": "Loans",
+        "field_name": "BookID"
+      }
+    ]
+  },
+  {
+    "kpi_name": "Student Satisfaction with Library Services",
+    "department": "Library Services",
+    "report_name": "Student Satisfaction Survey Results",
+    "cadence": "Annually",
+    "description": "A measure of how satisfied students are with the library's services and resources. (This would ideally come from a survey, which isn't directly represented in the database schema.  Assuming a survey table exists.)",
+    "data_required": []
+  }
+]
