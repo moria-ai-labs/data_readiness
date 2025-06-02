@@ -88,10 +88,10 @@ These examples demonstrate how to import the necessary functions, prepare your d
 
 #### Visualize and Compare Schema and KPI Networks
 ```python 
-from moria_engine.analysis.graph_visualizer import visualize_combined_networks1
+from moria_engine.analysis.graph_visualizer import visualize_combined_networks
 
 # Visualize both networks side by side with consistent node positions
-visualize_combined_networks1(df_schema, df_kpis)
+visualize_combined_networks(df_schema, df_kpis)
 ```
 
 #### Identify most critical missing link
@@ -121,7 +121,31 @@ from moria_engine.models.network_characterization import find_max_betweenness_sh
 critical_node, max_betweenness_shift = find_max_betweenness_shift_node(G)
 print(f"Node with max betweenness shift when removed: {critical_node} (shift: {max_betweenness_shift:.4f})")
 ```
+### Visualize and Compare Schema, KPI, and Report Networks
 
+The `visualize_combined_networks_skr` function allows you to visually compare the relationships between tables as defined by your schema, KPIs, and report requirements—all side by side, with consistent node positions for easy comparison.
+
+#### Example Usage
+
+```python
+from moria_engine.analysis.graph_visualizer import visualize_combined_networks_skr
+
+# Assume you have loaded your data into the following DataFrames:
+# df_schema: columns ['domain_name', 'table_name', 'field_name']
+# df_kpis: columns ['kpi_name', 'domain_name', 'table_name']
+# df_reports: output of load_json_reports, columns include ['report_name', 'table_name', ...]
+
+visualize_combined_networks_skr(df_schema, df_kpis, df_reports)
+```
+
+This will display three network graphs side by side:
+- **Schema-Based Network:** Shows table relationships based on shared fields in your schema.
+- **KPI-Based Network:** Shows table relationships based on shared KPIs.
+- **Report-Based Network:** Connects tables that are required together in the same report.
+
+Each network uses the same node layout, making it easy to spot similarities and differences in connectivity across your data landscape.
+
+![Example of combined schema, KPI, and report networks](images/combined_networks_skr.png)
 
 ### Contributing
 We welcome contributions to the Moria Data Readiness Engine! To contribute:
