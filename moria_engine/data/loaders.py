@@ -81,3 +81,38 @@ def load_json_kpis(file_path):
     else:
         # If the JSON is not nested, load it directly into a DataFrame
         return pd.read_json(file_path)
+
+
+
+def load_json_reports(filepath: str) -> pd.DataFrame:
+    """
+    Loads a JSON file containing report definitions and returns a DataFrame
+    with report and data requirement details.
+
+    Args:
+        filepath (str): Path to the JSON file.
+
+    Returns:
+        pd.DataFrame: DataFrame with columns:
+            ['report_name', 'report_description', 'direct_links', 'domain_name', 'table_name', 'field_name']
+    """
+    with open(filepath, 'r') as f:
+        reports = json.load(f)
+
+    rows = []
+    for report in reports:
+        report_name = report.get("report_name")
+        report_description = report.get("report_description")
+        direct_links = report.get("direct_links", [])
+        data_required = report.get("data_required", [])
+        for req in data_required:
+            rows.append({
+                "report_name": report_name,
+                "report_description": report_description,
+                "direct_links": direct_links,
+                "domain_name": req.get("domain_name"),
+                "table_name": req.get("table_name"),
+                "field_name": req.get("field_name"),
+            })
+
+    return pd.DataFrame(rows)
