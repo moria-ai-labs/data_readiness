@@ -1,0 +1,459 @@
+```json
+[
+  {
+    "message_id": "M0001",
+    "date": "2024-01-15",
+    "text": "Hey Sarah, can you pull the student demographics for the marketing campaign?",
+    "report_name": "Student Demographics for Marketing",
+    "sender": {
+      "employee_id": "E001",
+      "first_name": "Alice",
+      "last_name": "Johnson",
+      "department": "Marketing",
+      "reports_to": "E002"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "FirstName"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "LastName"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "City"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "State"
+      }
+    ]
+  },
+  {
+    "message_id": "M0002",
+    "date": "2024-01-16",
+    "text": "John, the Enrollment Dashboard is showing incorrect numbers.  Looks like the TuitionPaid flag in StudentEnrollment might be the issue.",
+    "report_name": "Enrollment Dashboard",
+    "sender": {
+      "employee_id": "E005",
+      "first_name": "David",
+      "last_name": "Lee",
+      "department": "Registrar",
+      "reports_to": "E006"
+    },
+    "receiver": {
+      "employee_id": "E007",
+      "first_name": "John",
+      "last_name": "Davis",
+      "department": "Data Engineering",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "TuitionPaid"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "EnrollmentStatus"
+      },
+            {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "AcademicTerm"
+      }
+    ]
+  },
+  {
+    "message_id": "M0003",
+    "date": "2024-01-17",
+    "text": "Can we get a report on faculty research publications by department?",
+    "report_name": "Faculty Research Publications",
+    "sender": {
+      "employee_id": "E008",
+      "first_name": "Emily",
+      "last_name": "Wilson",
+      "department": "Academic Affairs",
+      "reports_to": "E009"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Faculty",
+        "table_name": "FacultyResearch",
+        "field_name": "Title"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "FacultyResearch",
+        "field_name": "PublicationDate"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "Department"
+      }
+    ]
+  },
+  {
+    "message_id": "M0004",
+    "date": "2024-01-18",
+    "text": "Need to understand the budget allocation vs expenditure for each department in the Finance Domain. Can you create that report?",
+    "report_name": "Budget Allocation vs Expenditure",
+    "sender": {
+      "employee_id": "E010",
+      "first_name": "Michael",
+      "last_name": "Garcia",
+      "department": "Finance",
+      "reports_to": "E002"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "AllocatedAmount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "ExpenditureAmount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "Department"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "FiscalYear"
+      }
+    ]
+  },
+  {
+    "message_id": "M0005",
+    "date": "2024-01-19",
+    "text": "Any updates on the ETL process for loading student data? Seeing delays",
+    "report_name": "ETL Student Data Load",
+    "sender": {
+      "employee_id": "E005",
+      "first_name": "David",
+      "last_name": "Lee",
+      "department": "Registrar",
+      "reports_to": "E006"
+    },
+    "receiver": {
+      "employee_id": "E007",
+      "first_name": "John",
+      "last_name": "Davis",
+      "department": "Data Engineering",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "FirstName"
+      },
+            {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "StudentID"
+      }
+    ]
+  },
+  {
+    "message_id": "M0006",
+    "date": "2024-01-20",
+    "text": "I need a list of courses and their prerequisites. Something is wrong with the report",
+    "report_name": "Course Prerequisites Report",
+    "sender": {
+      "employee_id": "E008",
+      "first_name": "Emily",
+      "last_name": "Wilson",
+      "department": "Academic Affairs",
+      "reports_to": "E009"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseID"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseName"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CoursePrerequisites",
+        "field_name": "PrerequisiteCourseID"
+      }
+    ]
+  },
+  {
+    "message_id": "M0007",
+    "date": "2024-01-21",
+    "text": "Is there a way to track classroom utilization? Need to report",
+    "report_name": "Classroom Utilization Report",
+    "sender": {
+      "employee_id": "E008",
+      "first_name": "Emily",
+      "last_name": "Wilson",
+      "department": "Academic Affairs",
+      "reports_to": "E009"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Facilities",
+        "table_name": "Classroom",
+        "field_name": "ClassroomID"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Classroom",
+        "field_name": "Capacity"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "ClassroomID"
+      }
+    ]
+  },
+  {
+    "message_id": "M0008",
+    "date": "2024-01-22",
+    "text": "Need to report on Student Financial Aid disbursement dates are needed ASAP.",
+    "report_name": "Student Financial Aid Disbursement",
+    "sender": {
+      "employee_id": "E010",
+      "first_name": "Michael",
+      "last_name": "Garcia",
+      "department": "Finance",
+      "reports_to": "E002"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Student",
+        "table_name": "StudentFinancialAid",
+        "field_name": "DisbursementDate"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentFinancialAid",
+        "field_name": "AidAmount"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "StudentID"
+      }
+    ]
+  },
+  {
+    "message_id": "M0009",
+    "date": "2024-01-23",
+    "text": "Getting errors during data validation on Faculty table. Can you please review?",
+    "report_name": "Faculty Data Validation",
+    "sender": {
+      "employee_id": "E007",
+      "first_name": "John",
+      "last_name": "Davis",
+      "department": "Data Engineering",
+      "reports_to": "E004"
+    },
+    "receiver": {
+      "employee_id": "E003",
+      "first_name": "Sarah",
+      "last_name": "Brown",
+      "department": "Data Analytics",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "InstructorID"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "Email"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "Department"
+      }
+    ]
+  },
+  {
+    "message_id": "M0010",
+    "date": "2024-01-24",
+    "text": "The courses reports show an error. Can you check CourseDescription field?",
+    "report_name": "Courses Error",
+    "sender": {
+      "employee_id": "E008",
+      "first_name": "Emily",
+      "last_name": "Wilson",
+      "department": "Academic Affairs",
+      "reports_to": "E009"
+    },
+    "receiver": {
+      "employee_id": "E007",
+      "first_name": "John",
+      "last_name": "Davis",
+      "department": "Data Engineering",
+      "reports_to": "E004"
+    },
+    "data_required": [
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseID"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseDescription"
+      }
+    ]
+  }
+]
+```
+
+```json
+[
+    {
+        "employee_id": "E001",
+        "first_name": "Alice",
+        "last_name": "Johnson",
+        "department": "Marketing",
+        "reports_to": "E002"
+    },
+    {
+        "employee_id": "E002",
+        "first_name": "Bob",
+        "last_name": "Williams",
+        "department": "Marketing",
+        "reports_to": "E009"
+    },
+    {
+        "employee_id": "E003",
+        "first_name": "Sarah",
+        "last_name": "Brown",
+        "department": "Data Analytics",
+        "reports_to": "E004"
+    },
+    {
+        "employee_id": "E004",
+        "first_name": "Chris",
+        "last_name": "Jones",
+        "department": "Data Analytics",
+        "reports_to": "E009"
+    },
+    {
+        "employee_id": "E005",
+        "first_name": "David",
+        "last_name": "Lee",
+        "department": "Registrar",
+        "reports_to": "E006"
+    },
+    {
+        "employee_id": "E006",
+        "first_name": "Linda",
+        "last_name": "Moore",
+        "department": "Registrar",
+        "reports_to": "E009"
+    },
+    {
+        "employee_id": "E007",
+        "first_name": "John",
+        "last_name": "Davis",
+        "department": "Data Engineering",
+        "reports_to": "E004"
+    },
+    {
+        "employee_id": "E008",
+        "first_name": "Emily",
+        "last_name": "Wilson",
+        "department": "Academic Affairs",
+        "reports_to": "E009"
+    },
+    {
+        "employee_id": "E009",
+        "first_name": "Sophia",
+        "last_name": "Hall",
+        "department": "Administration",
+        "reports_to": "E011"
+    },
+    {
+        "employee_id": "E010",
+        "first_name": "Michael",
+        "last_name": "Garcia",
+        "department": "Finance",
+        "reports_to": "E002"
+    }
+]
+```

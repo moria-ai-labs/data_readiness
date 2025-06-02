@@ -1,0 +1,740 @@
+```json
+[
+  {
+    "report_name": "Student Demographics Report",
+    "report_description": "Provides a comprehensive view of student demographics, including contact information, enrollment status and academic history.",
+    "direct_links": [
+      "Student Enrollment Report",
+      "Student Academic Performance",
+      "Financial Aid Report"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "FirstName"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "LastName"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "DateOfBirth"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "Gender"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "RaceEthnicity"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "AddressLine1"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "AddressLine2"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "City"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "State"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "ZipCode"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "Country"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "Email"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "PhoneNumber"
+      }
+    ]
+  },
+  {
+    "report_name": "Student Enrollment Report",
+    "report_description": "Shows student enrollment in courses, including enrollment date, drop date, and current enrollment status.",
+    "direct_links": [
+      "Student Demographics Report",
+      "Course Roster",
+      "Student Academic Performance"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "EnrollmentID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "CourseID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "EnrollmentDate"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "DropDate"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "AcademicTerm"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "EnrollmentStatus"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "TuitionPaid"
+      }
+    ]
+  },
+  {
+    "report_name": "Student Academic Performance",
+    "report_description": "Displays a student's academic history, including grades, GPA, and degrees earned.",
+    "direct_links": [
+      "Student Demographics Report",
+      "Course Catalog",
+      "Student Enrollment Report"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Student",
+        "table_name": "StudentAcademicHistory",
+        "field_name": "AcademicRecordID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentAcademicHistory",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentAcademicHistory",
+        "field_name": "CourseID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentAcademicHistory",
+        "field_name": "Grade"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentAcademicHistory",
+        "field_name": "CreditsEarned"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentAcademicHistory",
+        "field_name": "GPA"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentAcademicHistory",
+        "field_name": "DegreeEarned"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentAcademicHistory",
+        "field_name": "GraduationDate"
+      }
+    ]
+  },
+  {
+    "report_name": "Financial Aid Report",
+    "report_description": "Provides information on financial aid received by students.",
+    "direct_links": [
+      "Student Demographics Report",
+      "Tuition and Fees Report"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Student",
+        "table_name": "StudentFinancialAid",
+        "field_name": "FinancialAidID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentFinancialAid",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentFinancialAid",
+        "field_name": "AidType"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentFinancialAid",
+        "field_name": "AidAmount"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentFinancialAid",
+        "field_name": "AcademicYear"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentFinancialAid",
+        "field_name": "DisbursementDate"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentFinancialAid",
+        "field_name": "Description"
+      }
+    ]
+  },
+  {
+    "report_name": "Course Catalog",
+    "report_description": "Lists all courses offered by the university, including course descriptions, credits, and departments.",
+    "direct_links": [
+      "Course Roster",
+      "Course Schedule",
+      "Student Academic Performance"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseID"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseCode"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseName"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseDescription"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "Credits"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "Department"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "Level"
+      }
+    ]
+  },
+  {
+    "report_name": "Course Schedule",
+    "report_description": "Details about course schedules, including time, location, and instructor.",
+    "direct_links": [
+      "Course Catalog",
+      "Faculty Directory",
+      "Classroom Availability"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "ScheduleID"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "CourseID"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "InstructorID"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "ClassroomID"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "DaysOfWeek"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "StartTime"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "EndTime"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "AcademicTerm"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "CourseSchedule",
+        "field_name": "Section"
+      }
+    ]
+  },
+  {
+    "report_name": "Course Roster",
+    "report_description": "Lists all students enrolled in a specific course.",
+    "direct_links": [
+      "Course Catalog",
+      "Student Enrollment Report",
+      "Faculty Directory"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseID"
+      },
+      {
+        "domain_name": "Course",
+        "table_name": "Course",
+        "field_name": "CourseName"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentEnrollment",
+        "field_name": "StudentID"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "FirstName"
+      },
+      {
+        "domain_name": "Student",
+        "table_name": "StudentDemographics",
+        "field_name": "LastName"
+      }
+    ]
+  },
+  {
+    "report_name": "Faculty Directory",
+    "report_description": "Provides contact information and departmental affiliation for faculty members.",
+    "direct_links": [
+      "Course Schedule",
+      "Faculty Research",
+      "Department Budget"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "InstructorID"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "FirstName"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "LastName"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "Department"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "Rank"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "Email"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "PhoneNumber"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "OfficeLocation"
+      },
+       {
+        "domain_name": "Faculty",
+        "table_name": "Faculty",
+        "field_name": "HireDate"
+      }
+    ]
+  },
+  {
+    "report_name": "Faculty Research",
+    "report_description": "Lists faculty research activities and publications.",
+    "direct_links": [
+      "Faculty Directory"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Faculty",
+        "table_name": "FacultyResearch",
+        "field_name": "ResearchID"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "FacultyResearch",
+        "field_name": "InstructorID"
+      },
+      {
+        "domain_name": "FacultyResearch",
+        "table_name": "FacultyResearch",
+        "field_name": "Title"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "FacultyResearch",
+        "field_name": "Description"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "FacultyResearch",
+        "field_name": "PublicationDate"
+      },
+      {
+        "domain_name": "Faculty",
+        "table_name": "FacultyResearch",
+        "field_name": "Journal"
+      },
+       {
+        "domain_name": "Faculty",
+        "table_name": "FacultyResearch",
+        "field_name": "DOI"
+      }
+    ]
+  },
+  {
+    "report_name": "Tuition and Fees Report",
+    "report_description": "Displays tuition and fees for different academic years and student types.",
+    "direct_links": [
+      "Financial Aid Report",
+      "Budget Report"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "TuitionFees",
+        "field_name": "TuitionFeeID"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "TuitionFees",
+        "field_name": "AcademicYear"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "TuitionFees",
+        "field_name": "FeeType"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "TuitionFees",
+        "field_name": "Amount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "TuitionFees",
+        "field_name": "Description"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "TuitionFees",
+        "field_name": "StudentType"
+      }
+    ]
+  },
+  {
+    "report_name": "Budget Report",
+    "report_description": "Provides information on university budget allocation and expenditure.",
+    "direct_links": [
+      "Expenditure Report",
+      "Department Budget"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "BudgetID"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "FiscalYear"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "Department"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "Category"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "AllocatedAmount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "ExpenditureAmount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "Description"
+      }
+    ]
+  },
+  {
+    "report_name": "Expenditure Report",
+    "report_description": "Lists all university expenditures.",
+    "direct_links": [
+      "Budget Report",
+       "Department Budget"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "ExpenditureID"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "ExpenditureDate"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "Department"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "Vendor"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "Amount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "Description"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "PaymentMethod"
+      }
+    ]
+  },
+   {
+    "report_name": "Classroom Availability",
+    "report_description": "Shows the availability of classrooms, including capacity and equipment.",
+    "direct_links": [
+      "Course Schedule",
+      "Building Information"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Facilities",
+        "table_name": "Classroom",
+        "field_name": "ClassroomID"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Classroom",
+        "field_name": "BuildingName"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Classroom",
+        "field_name": "RoomNumber"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Classroom",
+        "field_name": "Capacity"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Classroom",
+        "field_name": "RoomType"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Classroom",
+        "field_name": "HasProjector"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Classroom",
+        "field_name": "HasWhiteboard"
+      }
+    ]
+  },
+   {
+    "report_name": "Building Information",
+    "report_description": "Provides information about university buildings, including address and construction date.",
+    "direct_links": [
+      "Classroom Availability"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Facilities",
+        "table_name": "Building",
+        "field_name": "BuildingID"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Building",
+        "field_name": "BuildingName"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Building",
+        "field_name": "Address"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Building",
+        "field_name": "ConstructionDate"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Building",
+        "field_name": "TotalSquareFootage"
+      },
+      {
+        "domain_name": "Facilities",
+        "table_name": "Building",
+        "field_name": "EnergyEfficiencyRating"
+      },
+       {
+        "domain_name": "Facilities",
+        "table_name": "Building",
+        "field_name": "BuildingType"
+      }
+    ]
+  },
+  {
+    "report_name": "Department Budget",
+    "report_description": "Summary of Budget and Expenditures for the department.",
+    "direct_links": [
+      "Faculty Directory",
+      "Budget Report",
+      "Expenditure Report"
+    ],
+    "data_required": [
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "FiscalYear"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "Department"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "Category"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "AllocatedAmount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Budget",
+        "field_name": "ExpenditureAmount"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "ExpenditureDate"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "Department"
+      },
+      {
+        "domain_name": "Finance",
+        "table_name": "Expenditures",
+        "field_name": "Amount"
+      }
+    ]
+  }
+]
+```
