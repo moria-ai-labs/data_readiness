@@ -552,4 +552,5 @@ def visualize_combined_networks_skr(df_schema: pd.DataFrame, df_kpis: pd.DataFra
     axes[2].add_patch(rect2)
 
     plt.tight_layout()
+    plt.savefig("combined_networks_skr.png", dpi=300)  # Save the figure
     plt.show()
