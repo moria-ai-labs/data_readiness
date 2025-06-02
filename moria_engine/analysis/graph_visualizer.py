@@ -506,8 +506,14 @@ def visualize_combined_networks_skr(
     # --- Build KPI network ---
     matrix_kpis, table_names_kpis, table_to_domain_kpis, table_to_kpi = build_common_fields_matrix_kpis(df_kpis)
     G_kpis = nx.Graph()
+    
+    #for table in table_names_kpis:
+    #    G_kpis.add_node(table, domain=table_to_domain_kpis.get(table), kpi_name=", ".join(table_to_kpi.get(table, [])))
+
     for table in table_names_kpis:
-        G_kpis.add_node(table, domain=table_to_domain_kpis.get(table), kpi_name=", ".join(table_to_kpi.get(table, [])))
+        kpi_list = [str(k) for k in table_to_kpi.get(table, []) if k is not None]
+        G_kpis.add_node(table, domain=table_to_domain_kpis.get(table), kpi_name=", ".join(kpi_list))
+
     for i, t1 in enumerate(table_names_kpis):
         for j, t2 in enumerate(table_names_kpis):
             if matrix_kpis[i, j] > 0 and i != j:
@@ -575,6 +581,7 @@ def visualize_combined_networks_skr(
     nx.draw_networkx_edge_labels(G_kpis, pos, edge_labels=edge_weights_kpis, ax=axes[1], font_size=8)
     axes[1].set_title("KPI-Based Network")
 
+    """
     # Reports network
     # For reports, use a different color for report nodes
     node_colors_reports = []
@@ -600,6 +607,24 @@ def visualize_combined_networks_skr(
         font_weight='bold',
         node_shape='h'
     )
+    axes[2].set_title("Report-Based Network")
+    """
+
+    # reports network
+    edge_weights_reports = nx.get_edge_attributes(G_reports, 'weight')
+    node_colors_reports = list(nx.degree_centrality(G_reports).values())
+    nx.draw(
+        G_reports,
+        pos,
+        ax=axes[2],
+        with_labels=True,
+        node_color=node_colors_reports,
+        node_size=2000,
+        font_size=10,
+        font_weight='bold',
+        node_shape='h'
+    )
+    nx.draw_networkx_edge_labels(G_reports, pos, edge_labels=edge_weights_reports, ax=axes[2], font_size=8)
     axes[2].set_title("Report-Based Network")
 
     plt.tight_layout()
