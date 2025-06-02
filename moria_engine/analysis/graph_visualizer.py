@@ -185,7 +185,7 @@ def visualize_network_kpis(df: pd.DataFrame):
 
 def visualize_network_reports(df: pd.DataFrame):
     """
-    Visualize the report-to-table/field relationships as a network graph.
+    Visualize a network where nodes are tables and edges connect tables that are required by the same report.
 
     Args:
         df (pd.DataFrame): Output DataFrame from load_json_reports, with columns:
@@ -196,43 +196,25 @@ def visualize_network_reports(df: pd.DataFrame):
 
     G = nx.Graph()
 
-    # Add report nodes
-    report_names = df['report_name'].dropna().unique()
-    for report in report_names:
-        G.add_node(report, type='report')
+    # Add all unique tables as nodes
+    tables = df['table_name'].dropna().unique()
+    for table in tables:
+        G.add_node(table)
 
-    # Add table nodes and edges from reports to tables
-    for _, row in df.iterrows():
-        report = row['report_name']
-        table = row['table_name']
-        if pd.notna(report) and pd.notna(table):
-            G.add_node(table, type='table', domain=row.get('domain_name'))
-            G.add_edge(report, table, label=row.get('field_name'))
+    # For each report, connect all pairs of tables required by that report
+    for report, group in df.groupby('report_name'):
+        tables_in_report = group['table_name'].dropna().unique()
+        for i, t1 in enumerate(tables_in_report):
+            for t2 in tables_in_report[i+1:]:
+                if t1 != t2:
+                    # Optionally, you can add the report name as an edge attribute
+                    if G.has_edge(t1, t2):
+                        G[t1][t2]['reports'].add(report)
+                    else:
+                        G.add_edge(t1, t2, reports={report})
 
-    # Optionally, add direct links between reports
-    for _, row in df.iterrows():
-        report = row['report_name']
-        direct_links = row.get('direct_links', [])
-        if isinstance(direct_links, list):
-            for linked_report in direct_links:
-                if linked_report in report_names:
-                    G.add_edge(report, linked_report, style='dashed', color='gray')
-    """
     # Draw the graph
     pos = nx.spring_layout(G)
-    node_colors = ['skyblue' if G.nodes[n].get('type') == 'report' else 'lightgreen' for n in G.nodes]
-    nx.draw(G, pos, with_labels=True, node_color=node_colors, node_size=2000, font_size=10, font_weight='bold')
-    edge_labels = {(u, v): d.get('label', '') for u, v, d in G.edges(data=True) if d.get('label')}
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
-    plt.title("Network Visualization of Reports and Data Requirements")
-    plt.show()
-    """
-
-    # Draw the graph
-    pos = nx.spring_layout(G)  # Layout for better visualization
-    edge_weights = nx.get_edge_attributes(G, 'weight')
-
-    # Set colors for nodes based on centrality
     node_colors = list(nx.degree_centrality(G).values())
 
     plt.figure(figsize=(10, 8))
@@ -246,8 +228,10 @@ def visualize_network_reports(df: pd.DataFrame):
         font_weight='bold',
         node_shape='h'
     )
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_weights, font_size=8)
-    plt.title("Network Visualization Based on KPIs")
+    # Optionally, show the number of shared reports as edge labels
+    edge_labels = {(u, v): len(d['reports']) for u, v, d in G.edges(data=True)}
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=8)
+    plt.title("Network of Tables Co-occurring in Reports")
     plt.show()
 
     return G
@@ -424,12 +408,9 @@ def visualize_combined_networks(df_schema: pd.DataFrame, df_kpis: pd.DataFrame):
     )
     nx.draw_networkx_edge_labels(G_schema, pos, edge_labels=edge_weights_schema, ax=axes[0], font_size=8)
     axes[0].set_title("Schema-Based Network")
-
-    # Add a rectangular box around the schema-based network
-    rect = patches.Rectangle(
-        (0, 0), 1, 1, linewidth=2, edgecolor='black', facecolor='none', transform=axes[0].transAxes
-    )
-    axes[0].add_patch(rect)
+    # Add a rectangular box
+    rect0 = patches.Rectangle((0, 0), 1, 1, linewidth=2, edgecolor='black', facecolor='none', transform=axes[0].transAxes)
+    axes[0].add_patch(rect0)
 
     # Plot the KPI-based network
     edge_weights_kpis = nx.get_edge_attributes(G_kpis, 'weight')
@@ -447,23 +428,15 @@ def visualize_combined_networks(df_schema: pd.DataFrame, df_kpis: pd.DataFrame):
     )
     nx.draw_networkx_edge_labels(G_kpis, pos, edge_labels=edge_weights_kpis, ax=axes[1], font_size=8)
     axes[1].set_title("KPI-Based Network")
-
-    # Add a rectangular box around the KPI-based network
-    rect = patches.Rectangle(
-        (0, 0), 1, 1, linewidth=2, edgecolor='black', facecolor='none', transform=axes[1].transAxes
-    )
-    axes[1].add_patch(rect)
+    # Add a rectangular box
+    rect1 = patches.Rectangle((0, 0), 1, 1, linewidth=2, edgecolor='black', facecolor='none', transform=axes[1].transAxes)
+    axes[1].add_patch(rect1)
 
     # Show the combined plot
     plt.tight_layout()
     plt.show()
 
-
-def visualize_combined_networks_skr(
-    df_schema: pd.DataFrame,
-    df_kpis: pd.DataFrame,
-    df_reports: pd.DataFrame
-):
+def visualize_combined_networks_skr(df_schema: pd.DataFrame, df_kpis: pd.DataFrame, df_reports: pd.DataFrame):
     """
     Visualize three networks side by side: schema, KPIs, and reports, using the same node layout.
 
@@ -472,32 +445,17 @@ def visualize_combined_networks_skr(
         df_kpis (pd.DataFrame): DataFrame with 'kpi_name', 'table_name', 'domain_name'.
         df_reports (pd.DataFrame): DataFrame from load_json_reports, with 'report_name', 'table_name', etc.
     """
-    from moria_engine.analysis.data_transformers import build_common_fields_matrix_schema, build_common_fields_matrix_kpis
-
-    # --- Ensure all table names are present in all DataFrames ---
-    table_names_schema = set(df_schema["table_name"].dropna().unique())
-    table_names_kpis = set(df_kpis["table_name"].dropna().unique())
-    table_names_reports = set(df_reports["table_name"].dropna().unique())
-    all_tables = table_names_schema | table_names_kpis | table_names_reports
-
-    # Add missing tables to each DataFrame
-    def add_missing_tables(df, col_names, all_tables):
-        missing = all_tables - set(df["table_name"].dropna().unique())
-        if missing:
-            extra = pd.DataFrame({col: [None]*len(missing) for col in col_names})
-            extra["table_name"] = list(missing)
-            df = pd.concat([df, extra], ignore_index=True)
-        return df
-
-    df_schema = add_missing_tables(df_schema, ["table_name", "field_name", "domain_name"], all_tables)
-    df_kpis = add_missing_tables(df_kpis, ["kpi_name", "table_name", "domain_name"], all_tables)
-    df_reports = add_missing_tables(df_reports, ["report_name", "report_description", "direct_links", "domain_name", "table_name", "field_name"], all_tables)
+    # --- Collect all unique table names across all dataframes ---
+    tables_schema = set(df_schema['table_name'].dropna().unique())
+    tables_kpis = set(df_kpis['table_name'].dropna().unique())
+    tables_reports = set(df_reports['table_name'].dropna().unique())
+    all_tables = sorted(tables_schema | tables_kpis | tables_reports)
 
     # --- Build schema network ---
     matrix_schema, table_names_schema, table_to_domain_schema, _ = build_common_fields_matrix_schema(df_schema)
     G_schema = nx.Graph()
-    for table in table_names_schema:
-        G_schema.add_node(table, domain=table_to_domain_schema.get(table))
+    for table in all_tables:
+        G_schema.add_node(table)
     for i, t1 in enumerate(table_names_schema):
         for j, t2 in enumerate(table_names_schema):
             if matrix_schema[i, j] > 0 and i != j:
@@ -506,43 +464,29 @@ def visualize_combined_networks_skr(
     # --- Build KPI network ---
     matrix_kpis, table_names_kpis, table_to_domain_kpis, table_to_kpi = build_common_fields_matrix_kpis(df_kpis)
     G_kpis = nx.Graph()
-    
-    #for table in table_names_kpis:
-    #    G_kpis.add_node(table, domain=table_to_domain_kpis.get(table), kpi_name=", ".join(table_to_kpi.get(table, [])))
-
-    for table in table_names_kpis:
-        kpi_list = [str(k) for k in table_to_kpi.get(table, []) if k is not None]
-        G_kpis.add_node(table, domain=table_to_domain_kpis.get(table), kpi_name=", ".join(kpi_list))
-
+    for table in all_tables:
+        G_kpis.add_node(table)
     for i, t1 in enumerate(table_names_kpis):
         for j, t2 in enumerate(table_names_kpis):
             if matrix_kpis[i, j] > 0 and i != j:
                 G_kpis.add_edge(t1, t2, weight=matrix_kpis[i, j])
 
-    # --- Build Reports network ---
+    # --- Build Reports network (tables as nodes, edge if two tables in same report) ---
     G_reports = nx.Graph()
     for table in all_tables:
         G_reports.add_node(table)
-    for _, row in df_reports.iterrows():
-        report = row.get('report_name')
-        table = row.get('table_name')
-        if pd.notna(report) and pd.notna(table):
-            G_reports.add_node(report, type='report')
-            G_reports.add_edge(report, table)
-    # Optionally, add direct links between reports
-    report_names = df_reports['report_name'].dropna().unique()
-    for _, row in df_reports.iterrows():
-        report = row.get('report_name')
-        direct_links = row.get('direct_links', [])
-        if isinstance(direct_links, list):
-            for linked_report in direct_links:
-                if linked_report in report_names:
-                    G_reports.add_edge(report, linked_report, style='dashed', color='gray')
+    for report, group in df_reports.groupby('report_name'):
+        tables_in_report = group['table_name'].dropna().unique()
+        for i, t1 in enumerate(tables_in_report):
+            for t2 in tables_in_report[i+1:]:
+                if t1 != t2:
+                    if G_reports.has_edge(t1, t2):
+                        G_reports[t1][t2]['reports'].add(report)
+                    else:
+                        G_reports.add_edge(t1, t2, reports={report})
 
-    # --- Use the same layout for all graphs (tables only) ---
-    # Only use table nodes for layout
-    table_nodes = list(all_tables)
-    pos = nx.spring_layout(G_schema.subgraph(table_nodes))
+    # --- Use the same layout for all graphs ---
+    pos = nx.spring_layout(G_schema, seed=42)  # Shared layout for consistent node positions
 
     # --- Plot the networks side by side ---
     fig, axes = plt.subplots(1, 3, figsize=(30, 10))
@@ -563,6 +507,9 @@ def visualize_combined_networks_skr(
     )
     nx.draw_networkx_edge_labels(G_schema, pos, edge_labels=edge_weights_schema, ax=axes[0], font_size=8)
     axes[0].set_title("Schema-Based Network")
+    # Add a rectangular box
+    rect0 = patches.Rectangle((0, 0), 1, 1, linewidth=2, edgecolor='black', facecolor='none', transform=axes[0].transAxes)
+    axes[0].add_patch(rect0)
 
     # KPI network
     edge_weights_kpis = nx.get_edge_attributes(G_kpis, 'weight')
@@ -580,39 +527,13 @@ def visualize_combined_networks_skr(
     )
     nx.draw_networkx_edge_labels(G_kpis, pos, edge_labels=edge_weights_kpis, ax=axes[1], font_size=8)
     axes[1].set_title("KPI-Based Network")
+    # Add a rectangular box
+    rect1 = patches.Rectangle((0, 0), 1, 1, linewidth=2, edgecolor='black', facecolor='none', transform=axes[1].transAxes)
+    axes[1].add_patch(rect1)
 
-    """
     # Reports network
-    # For reports, use a different color for report nodes
-    node_colors_reports = []
-    for n in G_reports.nodes:
-        if G_reports.nodes[n].get('type') == 'report':
-            node_colors_reports.append('skyblue')
-        else:
-            node_colors_reports.append('lightgreen')
-    # Place report nodes at random positions outside the main layout
-    pos_reports = pos.copy()
-    import random
-    for n in G_reports.nodes:
-        if G_reports.nodes[n].get('type') == 'report':
-            pos_reports[n] = [random.uniform(-2, 2), random.uniform(-2, 2)]
-    nx.draw(
-        G_reports,
-        pos_reports,
-        ax=axes[2],
-        with_labels=True,
-        node_color=node_colors_reports,
-        node_size=2000,
-        font_size=10,
-        font_weight='bold',
-        node_shape='h'
-    )
-    axes[2].set_title("Report-Based Network")
-    """
-
-    # reports network
-    edge_weights_reports = nx.get_edge_attributes(G_reports, 'weight')
     node_colors_reports = list(nx.degree_centrality(G_reports).values())
+    edge_labels_reports = {(u, v): len(d['reports']) for u, v, d in G_reports.edges(data=True)}
     nx.draw(
         G_reports,
         pos,
@@ -624,8 +545,11 @@ def visualize_combined_networks_skr(
         font_weight='bold',
         node_shape='h'
     )
-    nx.draw_networkx_edge_labels(G_reports, pos, edge_labels=edge_weights_reports, ax=axes[2], font_size=8)
-    axes[2].set_title("Report-Based Network")
+    nx.draw_networkx_edge_labels(G_reports, pos, edge_labels=edge_labels_reports, ax=axes[2], font_size=8)
+    axes[2].set_title("Report-Based Network (Tables Co-occurring in Reports)")
+    # Add a rectangular box
+    rect2 = patches.Rectangle((0, 0), 1, 1, linewidth=2, edgecolor='black', facecolor='none', transform=axes[2].transAxes)
+    axes[2].add_patch(rect2)
 
     plt.tight_layout()
     plt.show()
