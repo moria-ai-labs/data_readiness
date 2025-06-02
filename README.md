@@ -8,7 +8,8 @@ The Moria Data Readiness Engine is a tool designed to analyze relationships and 
 ## Features
 - **Schema Analysis**: Analyze relationships between tables based on shared fields.
 - **KPI-Based Analysis**: Identify connections between tables based on shared KPIs.
-- **Network Visualization**: Generate interactive and static visualizations of schema and KPI-based networks.
+- **Report-Based Analysis**: Visualize and analyze how tables are connected through report requirements.
+- **Network Visualization**: Generate interactive and static visualizations of schema, KPI, and report-based networks.
 - **Graph-Theory Insights**: Leverage graph-theory algorithms (such as centrality measures, community detection, and path analysis) to identify the most important nodes (tables) and highlight critical missing links or connections in your data network. This approach helps uncover gaps, bottlenecks, or opportunities to strengthen data integration across datasets.
 - **Customizable Workflows**: Easily extendable for different datasets and use cases.
 
@@ -16,8 +17,15 @@ The Moria Data Readiness Engine is a tool designed to analyze relationships and 
 
 ## Project Structure
 - `moria_engine/`: Core package containing the engine's logic.
-  - `analysis/`: Functions for data analysis and visualization.
-  - `data/`: Data loaders and preprocessors.
+  - `analysis/`: Functions for data analysis and visualization (schema, KPI, and report networks).
+    - `graph_visualizer.py`: Visualization utilities for schema, KPI, and report networks.
+    - `graph_explainer.py`: Graph-theory-based analysis and explanation functions.
+    - `data_transformers.py`: Functions to build adjacency matrices and transform data for analysis.
+  - `loaders/`: Data loaders and preprocessors.
+    - `load_json_schema.py`: Loader for schema JSON files.
+    - `load_json_kpis.py`: Loader for KPI JSON files.
+    - `load_json_reports.py`: Loader for report JSON files.
+  - `models/`: Advanced network analysis and characterization algorithms.
 - `tests/`: Unit and integration tests for the project.
 - `notebooks/`: Jupyter notebooks for experimentation and prototyping.
 - `data/`: Raw and processed datasets.
