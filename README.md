@@ -238,14 +238,6 @@ from moria_engine.data.loaders import load_json_kpis
 df_kpis = load_json_kpis("path/to/your_kpis.json")
 ```
 
-#### 4. Report Data (nested JSON)
-```python
-from moria_engine.data.loaders import load_json_reports
-
-# Load a report JSON file into a DataFrame
-df_reports = load_json_reports("path/to/your_reports.json")
-```
-
 ---
 
 ### Example
@@ -258,9 +250,6 @@ df_schema = loaders.load_csv("data/schema.csv")
 
 # Load KPIs from JSON
 df_kpis = loaders.load_json_kpis("data/kpis.json")
-
-# Load reports from JSON
-df_reports = loaders.load_json_reports("data/reports.json")
 ```
 
 ---
