@@ -1,5 +1,11 @@
 # Moria Data Readiness Engine
 
+
+
+[![Star on GitHub](https://img.shields.io/github/stars/moria-ai-labs/moria-ai-labs.github.io?style=social)](https://github.com/moria-ai-labs/moria-ai-labs.github.io/stargazers)
+
+If you like this project, please consider giving it a ⭐️! Your support helps us grow.
+
 ![Moria Data Readiness Engine](images/mal_data_readiness_engine_logo.jpg)
 
 The Moria Data Readiness Engine is a tool designed to analyze relationships and interconnectivity between datasets. It provides insights into schema relationships, KPI-based connections, and network visualizations to help users understand their data better.
