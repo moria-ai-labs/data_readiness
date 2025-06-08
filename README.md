@@ -177,6 +177,92 @@ Each network uses the same node layout, making it easy to spot similarities and 
 
 ![Example of combined schema, KPI, and report networks](images/combined_networks_skr.png)
 
+## Bring your own data - Loading Data via CSV and JSON
+
+The Moria Data Readiness Engine supports loading your schema, KPI, and report data from both CSV and JSON files. The provided loader functions convert your data into Pandas DataFrames for further analysis.
+
+### Loading CSV Data
+
+For tabular data in CSV format, use the `load_csv` function:
+
+```python
+from moria_engine.data.loaders import load_csv
+
+# Load a CSV file into a DataFrame
+df = load_csv("path/to/your_file.csv")
+```
+
+The CSV should have columns as required for your workflow (for example: `domain_name`, `table_name`, `field_name` for schema data).
+
+---
+
+### Loading JSON Data
+
+For JSON data (including both flat and nested structures), use the specific loader functions:
+
+#### 1. Generic JSON (flat or nested)
+```python
+from moria_engine.data.loaders import read_json
+
+# Load a JSON file as a Python object (dict or list)
+data = read_json("path/to/your_file.json")
+```
+
+#### 2. Schema Data (nested JSON)
+
+If your schema is in a nested JSON format, use:
+
+```python
+from moria_engine.data.loaders import load_json_schema
+
+# Load a schema JSON file into a DataFrame
+df_schema = load_json_schema("path/to/your_schema.json")
+```
+
+This function will flatten nested structures into columns: `domain_name`, `table_name`, `field_name`.
+
+#### 3. KPI Data (nested JSON)
+```python
+from moria_engine.data.loaders import load_json_kpis
+
+# Load a KPI JSON file into a DataFrame
+df_kpis = load_json_kpis("path/to/your_kpis.json")
+```
+
+#### 4. Report Data (nested JSON)
+```python
+from moria_engine.data.loaders import load_json_reports
+
+# Load a report JSON file into a DataFrame
+df_reports = load_json_reports("path/to/your_reports.json")
+```
+
+---
+
+### Example
+
+```python
+from moria_engine.data import loaders
+
+# Load schema from CSV
+df_schema = loaders.load_csv("data/schema.csv")
+
+# Load KPIs from JSON
+df_kpis = loaders.load_json_kpis("data/kpis.json")
+
+# Load reports from JSON
+df_reports = loaders.load_json_reports("data/reports.json")
+```
+
+---
+
+**Note:**  
+- Ensure your data files match the expected structure. For examples, see the documentation and `notebooks/` folder.
+- CSV files should have headers matching the expected column names.
+- JSON files can be nested; loader functions will flatten them as needed.
+
+---
+
 ### Contributing
 We welcome contributions to the Moria Data Readiness Engine! To contribute:
 
