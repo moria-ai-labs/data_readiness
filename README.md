@@ -5,6 +5,8 @@ Curious about our platform? [Visit us](https://moria-ai-labs.github.io/)
 
 ![Moria Data Readiness Engine](images/mal_data_readiness_engine_logo.jpg)
 
+>Going beyond data quality—connecting the dots between data and KPIs to ensure the data readiness you need to solve your most business-critical challenges.
+
 The Moria Data Readiness Engine is a tool designed to analyze relationships and interconnectivity between datasets. It provides insights into schema relationships, KPI-based connections, and network visualizations to help users understand their data better.
 
 ---
