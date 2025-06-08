@@ -1,10 +1,6 @@
 # Moria Data Readiness Engine
 
-
-
-[![Star on GitHub](https://img.shields.io/github/stars/moria-ai-labs/moria-ai-labs.github.io?style=social)](https://github.com/moria-ai-labs/moria-ai-labs.github.io/stargazers)
-
-If you like this project, please consider giving it a ⭐️! Your support helps us grow.
+⭐️ If you like this project, give it a star!
 
 ![Moria Data Readiness Engine](images/mal_data_readiness_engine_logo.jpg)
 
