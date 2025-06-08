@@ -70,7 +70,7 @@ if project_path not in sys.path:
 import pandas as pd
 from moria_engine.analysis.data_transformers import build_common_fields_matrix_schema
 
-# Example DataFrame - Thre data domains, Table1 and Table2 share the same Key Field - Field2
+# Example DataFrame - Three tables, three data domains: Table1 and Table2 share the same Key Field - Field2
 df_schema = pd.DataFrame({
     "domain_name": ["Domain1", "Domain1", "Domain2","Domain3"],
     "table_name": ["Table1", "Table1","Table2", "Table3"],
@@ -80,7 +80,7 @@ df_schema = pd.DataFrame({
 # Generate the schema-based matrix
 matrix, table_names, table_to_domain, G = build_common_fields_matrix_schema(df_schema)
 
-# Expected Output - Table1 and Table2 are connected via Field2
+# Expected Output - Table1 and Table2 are connected via Field2; Table3 is disconnected - no common fields
 array([[0, 1, 0],
        [1, 0, 0],
        [0, 0, 0]])
@@ -92,16 +92,21 @@ array([[0, 1, 0],
 import pandas as pd
 from moria_engine.analysis.data_transformers import build_common_fields_matrix_kpis
 
-# Example DataFrame
+# Example DataFrame - Two KPIs, three domains, three tables. Table2 and Table3 belong to KPI2. Table1 is disconnected.
 df_kpis = pd.DataFrame({
-    "kpi_name": ["KPI1", "KPI2"],
-    "domain_name": ["Domain1", "Domain2"],
-    "table_name": ["Table1", "Table2"]
+    "kpi_name": ["KPI1", "KPI1","KPI2","KPI2"],
+    "domain_name": ["Domain1", "Domain1", "Domain2","Domain3"],
+    "table_name": ["Table1", "Table1","Table2", "Table3"],
+    "field_name": ["Field1", "Field2", "Field2", "Field3"]
 })
 
 # Generate the KPI-based matrix
 matrix, table_names, table_to_domain, table_to_kpi = build_common_fields_matrix_kpis(df_kpis)
+
+# Expected Output - Table2 and Table3 are connected via KPI2. Table1 is disconnected
 ```
+
+You can use the loader functions to bring your own Schema and KPI data via json or csv. The required format for the csv is illustrated above. The required format for json is found in the documentation [TODO]
 
 ![Example of a schema network](images/networks_schema.png)
 
