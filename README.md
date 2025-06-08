@@ -1,5 +1,7 @@
 # Moria Data Readiness Engine
 
+![Moria Data Readiness Engine](images/mal_data_readiness_engine_logo.jpg)
+
 The Moria Data Readiness Engine is a tool designed to analyze relationships and interconnectivity between datasets. It provides insights into schema relationships, KPI-based connections, and network visualizations to help users understand their data better.
 
 ---
