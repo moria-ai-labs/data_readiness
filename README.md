@@ -116,6 +116,15 @@ These examples demonstrate how to import the necessary functions, prepare your d
 
 ### Network Analysis and Advance Usage
 
+#### Load test data 
+```python
+from moria_engine.data import loaders
+
+# Load test data 
+df_kpis = loaders.load_json_kpis('../data/test/c003a_lambengolmor/20250601-hacp-c003_lambengolmor-kpi_details.json')
+df_schema = loaders.load_json_schema('../data/test/c003a_lambengolmor/20250601-hacp-c003_lambengolmor-data_domains_schema.json')
+```
+
 #### Visualize and Compare Schema and KPI Networks
 ```python 
 from moria_engine.analysis.graph_visualizer import visualize_combined_networks
