@@ -60,18 +60,25 @@ To get started with the Moria Data Readiness Engine, you can use the following e
 ### Schema-Based Matrix
 
 ```python
+import sys, os
+
+# Add the project directory to sys.path
+project_path = "/Users/hugocontrerasp/Documents/MORIA_AI_LABS/test_morial_data_readiness/data_readiness/"
+if project_path not in sys.path:
+    sys.path.append(project_path)
+
 import pandas as pd
 from moria_engine.analysis.data_transformers import build_common_fields_matrix_schema
 
-# Example DataFrame
+# Example DataFrame - Thre data domains, Table1 and Table2 share the same Key Field - Field2
 df_schema = pd.DataFrame({
-    "domain_name": ["Domain1", "Domain1", "Domain2"],
-    "table_name": ["Table1", "Table2", "Table3"],
-    "field_name": ["Field1", "Field2", "Field3"]
+    "domain_name": ["Domain1", "Domain1", "Domain2","Domain3"],
+    "table_name": ["Table1", "Table1","Table2", "Table3"],
+    "field_name": ["Field1", "Field2", "Field2", "Field3"]
 })
 
 # Generate the schema-based matrix
-matrix, table_names, table_to_domain = build_common_fields_matrix_schema(df_schema)
+matrix, table_names, table_to_domain, G = build_common_fields_matrix_schema(df_schema)
 ```
 
 ### KPI-Based Matrix
