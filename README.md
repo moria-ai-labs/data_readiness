@@ -79,6 +79,11 @@ df_schema = pd.DataFrame({
 
 # Generate the schema-based matrix
 matrix, table_names, table_to_domain, G = build_common_fields_matrix_schema(df_schema)
+
+# Expected Output - Table1 and Table2 are connected via Field2
+array([[0, 1, 0],
+       [1, 0, 0],
+       [0, 0, 0]])
 ```
 
 ### KPI-Based Matrix
