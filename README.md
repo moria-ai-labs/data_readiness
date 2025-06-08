@@ -62,8 +62,8 @@ To get started with the Moria Data Readiness Engine, you can use the following e
 ```python
 import sys, os
 
-# Add the project directory to sys.path
-project_path = "/Users/hugocontrerasp/Documents/MORIA_AI_LABS/test_morial_data_readiness/data_readiness/"
+# Add the project directory to sys.path PATH
+project_path = PATH_TO_PROJECT_DIRECTORY
 if project_path not in sys.path:
     sys.path.append(project_path)
 
