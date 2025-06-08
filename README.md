@@ -1,6 +1,7 @@
 # Moria Data Readiness Engine
 
 ⭐️ If you like this project, give it a star!
+Curious about our platform? [Visit us](https://moria-ai-labs.github.io/) 
 
 ![Moria Data Readiness Engine](images/mal_data_readiness_engine_logo.jpg)
 
