@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "data_readiness"
+version = "0.1.0"
+description = "Moria Data Readiness Engine: Analyze and visualize relationships and interconnectivity between datasets (schema, KPI, and report-based networks)."
+authors = [
+    { name="Moria AI Labs", email="moria.ai.labs@gmail.com" }
+]
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+
+dependencies = [
+    "pandas>=1.2",
+    "networkx>=2.5",
+    "matplotlib>=3.3",
+    "seaborn>=0.11",
+    "pyvis>=0.1.9.0",
+    # Add additional dependencies used in moria_engine/
+]
+
+[project.urls]
+Homepage = "https://github.com/moria-ai-labs/data_readiness"
+Documentation = "https://github.com/moria-ai-labs/data_readiness#readme"
+Source = "https://github.com/moria-ai-labs/data_readiness"
+Issues = "https://github.com/moria-ai-labs/data_readiness/issues"
+
+[tool.setuptools]
+packages = ["moria_engine"]
+
+[tool.setuptools.package-data]
+"moria_engine" = ["data/*"]
+
+[tool.setuptools.package-analysis]
+"moria_engine" = ["analysis/*"]
+
+[tool.setuptools.exclude-package-data]
+"moria_engine" = ["*.pyc", "__pycache__/*"]
