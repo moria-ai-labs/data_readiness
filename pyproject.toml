@@ -43,5 +43,8 @@ packages = ["moria_engine"]
 [tool.setuptools.package-data]
 "moria_engine" = ["data/*"]
 
+[tool.setuptools.package-analysis]
+"moria_engine" = ["analysis/*"]
+
 [tool.setuptools.exclude-package-data]
 "moria_engine" = ["*.pyc", "__pycache__/*"]
