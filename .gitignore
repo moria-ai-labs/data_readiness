@@ -127,6 +127,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+venv/
+venv_mal_data_readiness/
+.env/
 
 # Spyder project settings
 .spyderproject
